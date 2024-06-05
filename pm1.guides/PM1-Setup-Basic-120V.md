@@ -203,7 +203,7 @@ switch:
 
 **2. Set the SSID and Password.**
 
-<img src="../images/pm1/pm1.captive.ssid.png" alt="Capive SSID" style="width: 400px;"/>
+<img src="../images/pm1/pm1.captive.ssid.PNG" alt="Capive SSID" style="width: 400px;"/>
 
 After a minute or so visit the PM1 WEB portal using its mDNS address to verify it’s ready. Power cycle it if required.
 
