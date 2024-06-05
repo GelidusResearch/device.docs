@@ -1,6 +1,6 @@
 ## PM1 Setup Guide
 
-Our PM1 setup guide offers two methods to add the PM1 to an ESPHome/Home Assistant instance. You can add a new device and flash the firmware with a physical device connection via USB serial or you can add it using the pre-installed PM1 WIFI Captive portal and upload the firmware via OTA. The WIFI Captive portal method is by far a more convenient method since we only need a cell phone to establish your local WIFI connection. If the method chosen is the captive portal then you can install PM1 physically in the power distribution panel and configure it remotely using your phone and ESPHome/Home Assistant after one minute of power on time.
+This PM1 setup guide offers two methods to add the PM1 to an ESPHome/Home Assistant instance. You can add a new device and flash the firmware with a physical device connection via USB serial or you can add it using the pre-installed PM1 WIFI Captive portal and upload the firmware via OTA. The WIFI Captive portal method is by far a more convenient method since we only need a cell phone to establish your local WIFI connection. If the method chosen is the captive portal then you can install PM1 physically in the power distribution panel and configure it remotely using your phone and ESPHome/Home Assistant after one minute of power on time.
 
 **Important information:**
 
@@ -19,20 +19,19 @@ The ESPhome Home Assistant Add-on is required - see: [https://esphome.io/guides/
 
 1. Open the ESPhome add-on menu and add a new device and enter power-meter-1 or your own convention. The device name must be unique.
 
-![Add Device](../images/add.device.jpg)
+<img src="../images/add.device.jpg" alt="Add Device" style="width: 400px;"/>
 
 2. Skip this step. We need to add a full configuration first.
 
-![Skip This Step](../images/add.device.skip.jpg)
+<img src="../images/add.device.skip.jpg" alt="Select" style="width: 400px;"/>
 
 3. Select the Expressif ESP8266 ESP-12E
 
-![Select](../images/pm1/add.device.type.pm1.jpg)
+<img src="../images/pm1/add.device.type.pm1.jpg" alt="Select" style="width: 400px;"/>
 
 4. Skip this step. Note the generated unique key, this must be preserved in the config going forward.
 
-![Select](../images/add.device.skip.key.jpg)
-
+<img src="../images/add.device.skip.key.jpg" alt="Select" style="width: 400px;"/>
 
 
 ## YAML Edits
@@ -196,15 +195,15 @@ switch:
     name: ${disp_name} Restart
 ```
 
-**Captive Portal Method:**
+## **Captive Portal Method:**
 
-1. With the PM1 already powered up for at least 1 minute use a phone or other capable device connect to the PM1 default preinstalled captive portal AP SSID named power-meter-10
+**1. With the PM1 already powered up for at least 1 minute use a phone or other capable device connect to the PM1 default preinstalled captive portal AP SSID named power-meter-1**
 
-![Select](../images/pm1/captive.ap.png)
+<img src="../images/pm1/captive.ap.png" alt="Select" style="width: 400px;"/>
 
-2. Set the SSID and Password.
+**2. Set the SSID and Password.**
 
-![Select](../images/pm1/pm1.captive.ssid.png)
+<img src="../images/pm1/pm1.captive.ssid.png" alt="Select" style="width: 400px;"/>
 
 After a minute or so visit the PM1 WEB portal using its mDNS address to verify it’s ready. Power cycle it if required.
 
@@ -214,4 +213,11 @@ From your HA ESPHome Dashboard, prepare your edited YAML firmware config by sele
 
 3. Select wirelessly.
 
-![Select](../images/pm1/add.device.manual.pm1.jpg)
+<img src="../images/pm1/add.device.manual.pm1.jpg" alt="Select" style="width: 400px;"/>
+
+<br><br>
+
+<div style="display: flex; justify-content: space-between 0;">
+    <img src="../images/pm1/pm1.flash.j1.jpg" alt="Select" style="width: 200px;"/>
+    <img src="../images/pm1/pm1.flash.sw1.jpg" alt="Select" style="width: 200px;"/>
+</div>
