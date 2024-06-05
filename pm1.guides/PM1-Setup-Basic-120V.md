@@ -209,15 +209,40 @@ After a minute or so visit the PM1 WEB portal using its mDNS address to verify i
 
 http://power-meter-1.local
 
-From your HA ESPHome Dashboard, prepare your edited YAML firmware config by selecting INSTALL on the top right of the ESPHome edit screen.
+From your HA ESPHome Dashboard, prepare your edited YAML firmware config by selecting **INSTALL** on the top right of the ESPHome edit screen.
 
-3. Select wirelessly.
+**3. Select wirelessly.**
 
 <img src="../images/pm1/add.device.manual.pm1.jpg" alt="Select" style="width: 400px;"/>
-
 <br><br>
+* PM1 will now come online and you can add it to Home Assisant with the configured key.
+<br><br>
+<img src="../images/pm1/pm1.add.device.online.jpg" alt="Select" style="width: 400px;"/>
+<br><br>
+
+## **Physical USB Serial Method:**
+
+To enable flash mode on the PM1 you need to depress and hold SW1 then connect your USB to serial adapter to the uart flashing connector as shown here. Once power is applied the button can be released and PM1 will be in flash mode.  (Preconnecting J1 and then plugging in the USB end is usually easier)
 
 <div style="display: flex; justify-content: space-between 0;">
     <img src="../images/pm1/pm1.flash.j1.jpg" alt="Select" style="width: 200px;"/>
     <img src="../images/pm1/pm1.flash.sw1.jpg" alt="Select" style="width: 200px;"/>
 </div>
+<br><br>
+Serial TX and RX pins should be crossed e.g.
+<br><br>
+<pre><code>J1 PM1 :    USB Adapter
+TX     -&gt;   RX
+RX     &lt;-   TX
+3.3v   -    3.5v Max
+GND    -    GND</code></pre>
+
+Prepare the firmware by selecting **INSTALL** on the top right of the ESPHome edit screen.
+
+* Select Plug into this computer.
+
+<img src="../images/pm1/add.device.manual.pm1.jpg" alt="Select" style="width: 400px;"/>
+<br><br>
+PM1 will now come online and you can add it to Home Assisant with the configured key.
+<br><br>
+This completes the PM1 setup guide.
