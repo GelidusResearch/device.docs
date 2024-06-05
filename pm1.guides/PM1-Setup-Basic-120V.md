@@ -199,11 +199,11 @@ switch:
 
 **1. With the PM1 already powered up for at least 1 minute use a phone or other capable device connect to the PM1 default preinstalled captive portal AP SSID named power-meter-1**
 
-<img src="../images/pm1/captive.ap.png" alt="Select" style="width: 400px;"/>
+<img src="../images/pm1/captive.ap.png" alt="Captive" style="width: 400px;"/>
 
 **2. Set the SSID and Password.**
 
-<img src="../images/pm1/pm1.captive.ssid.png" alt="Select" style="width: 400px;"/>
+<img src="../images/pm1/pm1.captive.ssid.png" alt="Capive SSID" style="width: 400px;"/>
 
 After a minute or so visit the PM1 WEB portal using its mDNS address to verify it’s ready. Power cycle it if required.
 
