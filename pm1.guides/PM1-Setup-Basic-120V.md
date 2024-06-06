@@ -245,4 +245,7 @@ Prepare the firmware by selecting **INSTALL** on the top right of the ESPHome ed
 <br><br>
 PM1 will now come online and you can add it to Home Assisant with the configured key.
 <br><br>
+<img src="../images/pm1/pm1.add.device.online.jpg" alt="Select" style="width: 400px;"/>
+<br><br>
+
 This completes the PM1 setup guide.
