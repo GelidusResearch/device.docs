@@ -269,6 +269,7 @@ http://gdo1.local
 Prepare the firmware by selecting INSTALL on the top right of the ESPHome gdo1 edit screen.
 
 Select Wireless.
+
 <img src="/images/gdo/gdo1.esphome.install.jpg" alt="Select" style="width: 400px;"/>
 
 
@@ -279,6 +280,7 @@ GRGDO1 will now come online and you can add it to Home Assistant with the config
 To enable flash mode on the GRGDO1 you need to depress and hold SW1 then connect your USB to serial adapter to the UART flashing connector as shown here. Once power is applied the button can be released and GRGDO1 will be in flash mode.  (Pre-connecting J1 and then plugging in the USB end is usually easier)
 
 GRGDO1 Flashing Header
+
 <img src="/images/gdo/gdo1.flash.header.JPG" alt="Select" style="width: 200px;"/>
 
 Serial TX and RX pins should be crossed e.g.
@@ -301,6 +303,7 @@ GRGDO1 will now come online and you can add it to  Home Assistant with the confi
 ## Connecting the GRGDO1 Module
 
 J4 Pinouts
+
 <img src="/images/gdo/gdo1.J4.connector.png" alt="Select" style="width: 400px;"/>
 
 Pins 1 or 3 (CTRL) connects to the RED door opener terminal, this is the wired rolling code control signal. It can also connect to the door control button panel. Two terminals are provided to allow for a secondary feed.
@@ -321,11 +324,17 @@ Button Card
 Our GDO setup guide includes this custom button card which provides a compact simple interface for quick ops on a phone. This example assumes you have a HACS frontend installed with button-card and card-mod setup.
 
 Compact Button Card - Closed State
+
 <img src="/images/gdo/GDO.Button.Closed.jpg" alt="Select" style="width: 400px;"/>
+
 Compact Button Card - Transition State
+
 <img src="/images/gdo/GDO.Button.Transition.jpg" alt="Select" style="width: 400px;"/>
+
 Compact Button Card -  Open State
+
 <img src="/images/gdo/GDO.Button.Open.jpg" alt="Select" style="width: 400px;"/>
+
 # HA Button Card YAML Example
 
 ```yaml
@@ -374,10 +383,15 @@ garage-door-button-card:
 In this GDO setup guide example we use the default entity card with a custom card-mod to high light it's border, in this case the custom card-mod is optional.
 
 Entity Card - Closed
+
 <img src="/images/gdo/GDO.Entity.Closed.jpg" alt="Select" style="width: 400px;"/>
+
 Entity Card - Transition
+
 <img src="/images/gdo/GDO.Entity.Open.jpg" alt="Select" style="width: 400px;"/>
+
 Entity Card - Open
+
 <img src="/images/gdo/GDO.Entity.Transition.jpg" alt="Select" style="width: 400px;"/>
 
 ## Entities example
