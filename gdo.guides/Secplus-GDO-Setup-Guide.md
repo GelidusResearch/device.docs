@@ -7,11 +7,34 @@ This Secplus GDO ESP32 setup guide provides two methods to add the GRGDO1 to an 
 
 **Important information:**
 
-- If you are not familiar with AC mains safety please consult with or hire an electrician to connect the GRGDO1.
 - NEVER connect to a live AC mains supply while the case is open.
 - Do not flash the firmware while the GRGDO1 is AC connectd, you must use a USB to UART adapter that supplies 3.3v DC.
-- Always use an non-metallic fire safe enclosure to house the GRGDO1, (Included with the GRGDO1-KIT)
+
 - The ESPhome Home Assistant Add-on is required - see: [ESPhome Getting Started](https://esphome.io/guides/getting_started_hassio.html)
+
+## GRGDO1 Device Info
+
+Availble from [https/www.gelidus.ca/](https/www.gelidus.ca/)
+
+Inside the enclosure.
+
+<img src="/images/gdo/grgdo1.top.bare.jpg" alt="GRGDO1" style="width: 400px;"/>
+
+- 60 x 60 mm PCB
+- 4 Pin ESP programming header (3.3v)
+- Powerful ESP32S Dual Core 240Mhz 4MB Flash, BLE and WiFi module!
+- PCB layout strictly follows ESP antenna specifications providing excellent WiFi range
+- 8 Pin Quick connect
+- Flash enable button (power cycle based)
+- Powered directly with US AC plug receptacle blades (120 VAC)
+- US AC receptacle passthrough plug (120 VAC)
+- Follows UL/CSA specifications.
+- 1 Meter of 3 conductor 22 AWG bell wire
+- 3D printed protective safety enclosure.
+
+Protective 3D enclosure (FR ABS)
+
+<img src="/images/gdo/grgdo1.enclosed.jpg" alt="GRGDO1" style="width: 400px;"/>
 
 ## GDO Setup Guide - ESPHome Device Preparation
 
