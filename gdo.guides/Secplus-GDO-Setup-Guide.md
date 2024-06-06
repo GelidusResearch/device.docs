@@ -1,5 +1,5 @@
 
-# Secplus GDO ESP32 Setup Guide
+# GRGDO1 Secplus GDO Setup Guide
 
 The Secplus GDO implementation by Konnected is an alternative to RATGDO. It features a number of improvements and is significantly more responsive. Secplus GDO automatically detects the security+ version. Event based processing replaces the RATGDO polling and it runs Espressif IDF hardware serial drivers. It's host a clean and easy to use library set decoupling the  secplus and GDO function calls. This implementation only runs on an ESP32 MCU.
 
