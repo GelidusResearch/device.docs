@@ -323,7 +323,7 @@ Select Plug into this computer.
 
 <img src="/images/gdo/gdo1.esphome.install.jpg" alt="Select" style="width: 400px;"/>
 
-GRGDO1 will now come online and you can add it to  Home Assistant with the configured key.
+GRGDO1 will now come online and you can add it to  Home Assistant with the configured key. Note: If you are trying to test your GRGDO1 configuration while powered by the USB UART, you may run into bootloop issues due to tripping the ESP32's brownout detection. You may need to plug the GRGDO1 into AC power to get it to boot.
 
 
 ## Connecting the GRGDO1 Module
