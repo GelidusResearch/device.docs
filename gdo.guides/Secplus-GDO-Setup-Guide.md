@@ -112,6 +112,7 @@ api:
     key: "YOUR API KEY GOES HERE"
 
 ota:
+  platform: esphome
 
 improv_serial:
 
