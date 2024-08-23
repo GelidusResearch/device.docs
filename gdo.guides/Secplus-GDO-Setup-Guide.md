@@ -63,7 +63,7 @@ Skip this step and note the generated unique key, this must be preserved in the 
 
 ## GDO Setup Guide - YAML Configuration
 
-Now we can edit the newly created device named gdo1, preserving the API key and add the example GRGDO1 code after the captive portal line, as shown. Note: the secplusv2 protocol selection default, older units may need secplusv1. You can also set the source to the RATGDO Github URL. We provide an alternate here to ensure upstream changes are well tested for good code quality.
+Now we can edit the newly created device named gdo1, preserving the API key and add the example GRGDO1 code after the captive portal line, as shown. We provide an alternate here to ensure upstream changes are well tested for good code quality.
 
 ```yaml
 external_components:
