@@ -403,6 +403,9 @@ Pins 6,7 and 8 are the dry contact inputs. This is the default config from the Y
 
 This example is a basic config and is the most common way to connect up the GRGDO1 hardware
 
+## DHT22 Add-On Connections
+<img src="/images/gdo/dht22.grgdo1.connection.png" alt="Select" style="width: 400px;"/>
+
 ## Home Assistant Dashboard Examples
 
 Button Card
