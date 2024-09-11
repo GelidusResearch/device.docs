@@ -79,6 +79,12 @@ substitutions:
   dry_contact_open_pin: GPIO17  # J4 Pin 6 Green
   dry_contact_close_pin: GPIO19 # J4 Pin 7 Blue
   dry_contact_light_pin: GPIO18 # J4 Pin 8 Orange
+  
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+    version: recommended
 
 esphome:
   name: grgdo1
