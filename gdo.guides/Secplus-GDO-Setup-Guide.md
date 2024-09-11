@@ -79,7 +79,16 @@ substitutions:
   dry_contact_open_pin: GPIO17  # J4 Pin 6 Green
   dry_contact_close_pin: GPIO19 # J4 Pin 7 Blue
   dry_contact_light_pin: GPIO18 # J4 Pin 8 Orange
-  
+  garage_door_cover_name: Garage Door
+  garage_light_name: Garage Light
+  garage_openings_name: Garage Openings
+  garage_lock_name: Lock
+  garage_motion_name: Motion
+  garage_obstruction_name: Obstruction
+  garage_motor_name: Motor
+  garage_button_name: Wall Button
+  garage_sync_name: Synced
+
 esp32:
   board: esp32dev
   framework:
