@@ -76,45 +76,38 @@ substitutions:
   friendly_name: "GDO"
   uart_tx_pin: GPIO22           # J4 Pin 1 or 3 Red CTRL
   uart_rx_pin: GPIO21           # J4 Pin 1 or 3 Red CTRL
-  #input_obst_pin: GPIO23        # J4 Pin 4 Grey OBST - not required with secplus_gdo
   dry_contact_open_pin: GPIO17  # J4 Pin 6 Green
   dry_contact_close_pin: GPIO19 # J4 Pin 7 Blue
   dry_contact_light_pin: GPIO18 # J4 Pin 8 Orange
 
-esp32:
-  board: esp32dev
-  framework:
-    type: esp-idf
-    version: recommended
-
 esphome:
   name: grgdo1
+  friendly_name: grgdo1
+  comment: "ESP32: Garage Door Opener"
+  libraries:
+    - https://github.com/gelidusresearch/gdolib
   platformio_options:
-    lib_deps:
-      - https://github.com/gelidusresearch/gdolib
     build_flags:
+      - -Wl,--wrap=esp_panic_handler
       - -DUART_SCLK_DEFAULT=UART_SCLK_APB
 
 wifi:
+  on_connect:
+    lambda: id(grgdo).start_gdo();
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
   ap:
     ssid: "grgdo1"
     password: ""
+    ap_timeout: 10s
 
 captive_portal:
-
-logger:
-
-api:
-
-ota:
 
 improv_serial:
 
 esp32_improv:
-  authorizer: false
+   authorizer: false
 
 web_server:
   include_internal: true
@@ -126,7 +119,6 @@ secplus_gdo:
   id: grgdo
   input_gdo_pin: ${uart_rx_pin}
   output_gdo_pin: ${uart_tx_pin}
-  #input_obst_pin: ${input_obst_pin}
 
 light:
   - platform: secplus_gdo
@@ -153,6 +145,16 @@ sensor:
     name: "Garage Door Openings"
     unit_of_measurement: "openings"
     icon: mdi:open-in-app
+  # - platform: dht
+  #   model: DHT22
+  #   pin: GPIO3
+  #   temperature:
+  #     name: "Temperature"
+  #     accuracy_decimals: 1
+  #   humidity:
+  #     name: "Humidity"
+  #     accuracy_decimals: 1
+  #   update_interval: 60s
 
 lock:
   - platform: secplus_gdo
@@ -177,7 +179,7 @@ binary_sensor:
     name: "Garage Door Motor"
     id: gdo_motor
     secplus_gdo_id: grgdo
-    entity_category: diagnostic
+    device_class: running
     type: motor
   - platform: secplus_gdo
     name: "Garage Button"
@@ -185,6 +187,13 @@ binary_sensor:
     secplus_gdo_id: grgdo
     entity_category: diagnostic
     type: button
+  - platform: secplus_gdo
+    name: $garage_sync_name
+    id: gdo_synced
+    secplus_gdo_id: grgdo
+    type: sync
+    device_class: connectivity
+
   - platform: gpio
     id: "${id_prefix}_dry_contact_open"
     pin:
@@ -234,12 +243,19 @@ binary_sensor:
 
 switch:
   - platform: secplus_gdo
-    id: "gdo_learn"
+    id: gdo_learn
     type: learn
     secplus_gdo_id: grgdo
-    name: "Learn"
+    name: Learn
     icon: mdi:plus-box
     entity_category: config
+
+  - platform: secplus_gdo
+    id: gdo_toggle_only
+    type: toggle_only
+    secplus_gdo_id: grgdo
+    name: Toggle Only
+    icon: mdi:plus-box
 
 select:
   - platform: secplus_gdo
@@ -251,28 +267,66 @@ select:
 
 number:
   - platform: secplus_gdo
-    name: Garage door opening duration
+    name: Opening duration
     secplus_gdo_id: grgdo
     entity_category: config
     id: gdo_open_duration
     type: open_duration
     unit_of_measurement: "ms"
+    internal: true
 
   - platform: secplus_gdo
-    name: Garage door closing duration
+    name: Closing duration
     secplus_gdo_id: grgdo
     entity_category: config
     id: gdo_close_duration
     type: close_duration
     unit_of_measurement: "ms"
 
+  - platform: secplus_gdo
+    name: Client ID
+    secplus_gdo_id: grgdo
+    entity_category: config
+    id: gdo_client_id
+    type: client_id
+    mode: box
+
+  - platform: secplus_gdo
+    name: Rolling Code
+    secplus_gdo_id: grgdo
+    entity_category: config
+    id: gdo_rolling_code
+    type: rolling_code
+    mode: box
+
 button:
   - platform: restart
     name: Restart
+    id: restart_button
     entity_category: config
   - platform: factory_reset
     name: Factory Reset
     entity_category: config
+  - platform: template
+    name: Reset door timings
+    entity_category: config
+    on_press:
+      - number.set:
+          id: gdo_open_duration
+          value: 0
+      - number.set:
+          id: gdo_close_duration
+          value: 0
+      - button.press:
+          id: restart_button
+  - platform: template
+    name: Re-sync
+    entity_category: config
+    on_press:
+      - number.increment:
+          id: gdo_client_id
+      - button.press:
+          id: restart_button
 ```
 
 ## GDO Setup Guide - Captive Portal Method
