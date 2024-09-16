@@ -23,7 +23,9 @@ Edit your YAML to match it as follows.
 
 ## Connecting the PM1 and a secondary transfomer
 
-The PM1 should be supplied from L1 which will be the odd numbered breakers. L1 will be referenced from the PM1's on board separate 6VAC transformer winding. If you have a secondary 6VAC reference voltage tranformer then it should be connected to L2 which will be even numbered.
+The PM1 should be supplied from L1 which will start on the first odd numbered breaker and then alternates with L2 on the next odd incremented number. L1 will be referenced from the PM1's on board separate 6VAC transformer winding. If you have a secondary 6VAC reference voltage tranformer then it should be connected to L2 which will be the next odd numbered breaker. The same applies to the even side which starts with L1 and the next even numbered breaker will be on L2.
+
+While this is the most common panel layout it may not be on some rare exceptions, you can verify the correct layout by measuring the voltage across the two odd or two even numbered breakers. It should be always be 240V across the breaker otherwise switch to odd even pair like breakers 5 and 6.
 
 <div style="display: flex; justify-content: space-between 0;">
     <img src="../images/pm1/200A.split.phase.panel.jpg" alt="Select" style="width: 500px;"/>
