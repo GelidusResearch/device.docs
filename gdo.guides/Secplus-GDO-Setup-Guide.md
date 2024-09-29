@@ -96,8 +96,8 @@ esp32:
     version: recommended
 
 esphome:
-  name: grgdo1
-  friendly_name: grgdo1
+  name: gdo1
+  friendly_name: gdo1
   comment: "ESP32: Garage Door Opener"
   libraries:
     - https://github.com/gelidusresearch/gdolib
@@ -113,7 +113,7 @@ wifi:
   password: !secret wifi_password
 
   ap:
-    ssid: "grgdo1"
+    ssid: "gdo1"
     password: ""
     ap_timeout: 10s
 
@@ -322,6 +322,17 @@ number:
     id: gdo_rolling_code
     type: rolling_code
     mode: box
+
+  # Remidiates wall button brownouts by throttling TX activity
+  # 350ms recommened on 880LM units
+  - platform: secplus_gdo
+    name: Min Command Interval
+    secplus_gdo_id: grgdo
+    entity_category: config
+    id: gdo_min_command_interval
+    type: min_command_interval
+    mode: box
+    unit_of_measurement: "ms"
 
 button:
   - platform: restart
