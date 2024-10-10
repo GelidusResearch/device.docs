@@ -11,6 +11,7 @@ This Secplus GDO ESP32 setup guide provides two methods to add the GRGDO1 to an 
 - Do not flash the firmware while the GRGDO1 is AC connectd, you must use a USB to UART adapter that supplies 3.3v DC.
 
 - The ESPhome Home Assistant Add-on is required - see: [ESPhome Getting Started](https://esphome.io/guides/getting_started_hassio.html)
+- **If you are updating a current install please clean the build files in HA or in platformio**
 
 ## GRGDO1 Device Info
 
@@ -333,6 +334,16 @@ number:
     type: min_command_interval
     mode: box
     unit_of_measurement: "ms"
+
+  # Add Time to Close (TTC) control, 0s = disabled
+  - platform: secplus_gdo
+    name: Time to Close
+    secplus_gdo_id: grgdo
+    entity_category: config
+    id: gdo_time_to_close
+    type: time_to_close
+    mode: box
+    unit_of_measurement: "s"
 
 button:
   - platform: restart
