@@ -8,8 +8,7 @@ This Secplus GDO ESP32 setup guide provides two methods to add the GRGDO1 to an 
 **Important information:**
 
 - NEVER connect to a live AC mains supply while the case is open.
-- Do not flash the firmware while the GRGDO1 is AC connectd, you must use a USB to UART adapter that supplies 3.3v DC.
-
+- Do not UART flash the firmware while the GRGDO1 is AC connected, use only the USB to UART adapter that supplies 3.3v DC.
 - The ESPhome Home Assistant Add-on is required - see: [ESPhome Getting Started](https://esphome.io/guides/getting_started_hassio.html)
 - **If you are updating a current install please clean the build files in HA or in platformio**
 
