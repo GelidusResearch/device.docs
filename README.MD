@@ -15,3 +15,5 @@ This repo provides Home Assistant/ESPHome configuration guides and other informa
 
 
 [GRPS1 Setup Guide](/ps1.guides/PS1-Setup-Guide.md) - PS1 Setup Guide - LD2420/LD2410C
+
+[GREC1 Setup Guide](/ec.guides/GREC-Setup-Guide.md) - GREC1 Setup Guide - Energy collector interface, Photo Glow sensor, Pulse counter, RS485 and RS232
