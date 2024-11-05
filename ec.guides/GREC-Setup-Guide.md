@@ -40,7 +40,7 @@ Protective 3D enclosure (FR ABS)
 
 ## GREC1 Setup Guide - ESPHome Device Preparation
 
-To start we create a unique device name like energy-collector-1, this will create a YAML file named energy-collector-1 that we are going to edit as needed.
+To start we create a unique device name like grec1, this will create a YAML file named grec1 that we are going to edit as needed.
 <br></br>
 
 ![New Device](/images/add.device.jpg)
@@ -65,11 +65,11 @@ Skip this step and note the generated unique key, this must be preserved in the 
 
 ## GDO Setup Guide - YAML Configuration
 
-Now we can edit the newly created device named energy-collector-1, preserving the API key and add the example code after the captive portal line, as shown.
+Now we can edit the newly created device named grec1, preserving the API key and add the example code after the captive portal line, as shown.
 
 ```yaml
 esphome:
-  name: energy-collector-1
+  name: grec1
   friendly_name: "GREC1"
 
 esp32:
@@ -90,7 +90,7 @@ ota:
     password: "<YOUR_OTA_PASSWORD>"
 
 substitutions:
-  device_name: energy-collector-1
+  device_name: grec1
   friendly_name: GREC1
   # GPIO J2 Connections
   #   |       GREC1       |
@@ -115,7 +115,7 @@ wifi:
   password: <YOUR_PASSWORD> # or !secret wifi_password
 
   ap:
-    ssid: "GREC1"
+    ssid: "grec1"
     password: ""
     ap_timeout: 10s
 
@@ -307,7 +307,7 @@ status_led:
 
 With the GREC1 already powered up for at least 1 minute use a phone or other capable device connect to the GREC1 default preinstalled captive portal AP SSID named grec1
 <br><br>
-<img src="/images/ec1/grec1.captive." alt="Select" style="width: 400px;"/>
+<img src="/images/ec1/grec1.captive.portal.png" alt="Select" style="width: 400px;"/>
 <br><br>
 Set your SSID and Password.
 <br><br>
@@ -334,8 +334,7 @@ Select Plug into this computer.
 
 <img src="/images/ec1/grec1.esphome.install.jpg" alt="Select" style="width: 400px;"/>
 
-GREC1 will now come online and you can add it to  Home Assistant with the configured key. Note: If you are trying to test your GREC1 configuration while powered by the USB UART, you may run into bootloop issues due to tripping the ESP32's brownout detection. You may need to plug the GREC1 into AC power to get it to boot.
-
+GREC1 will now come online and you can add it to  Home Assistant with the configured key.
 
 ## Connecting the GREC1 Module
 
