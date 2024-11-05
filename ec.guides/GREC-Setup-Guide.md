@@ -307,7 +307,7 @@ status_led:
 
 With the GREC1 already powered up for at least 1 minute use a phone or other capable device connect to the GREC1 default preinstalled captive portal AP SSID named grec1
 <br><br>
-<img src="/images/ec1/grec1.captive.portal.png" alt="Select" style="width: 400px;"/>
+<img src="/images/ec1/grec1.captive." alt="Select" style="width: 400px;"/>
 <br><br>
 Set your SSID and Password.
 <br><br>
