@@ -13,7 +13,7 @@ The GREC1 is a multi purpose interfacing device specifically designed for collec
 
 ## GREC1 Device Info
 
-Availble soon from [https/www.gelidus.ca/](https/www.gelidus.ca/)
+Availble soon from [https://www.gelidus.ca/](https://www.gelidus.ca/)
 
 Inside the enclosure.
 
@@ -346,13 +346,27 @@ J2 Pinouts
 - Pin 1 - Impulse Photo Diode +
   This connection should be provisioned using a single wire core cable with a stranded shield, the photo diode anode should be soldered to the core wire and cathode grounded with the shield. This signal feeds into the integrated LM393 comparator.
 - Pin 3 - Impulse Wired +
-  This is a digital logic input, it it zener clamped to limit it to +3.3v intermally, the signal should be wired along with a ground for reference.
+  This is a digital logic input, it is zener clamped to limiting it at +3.3v intermally, the signal should be wired along with a ground for reference.
 - Pin 5 & 6 - RS232-TX/RX
-  These connections are Standard EIA signal levels and should have a ground reference when the are used. See the DB Connector Reference for commonly used pins.
+  These connections are Standard EIA signal levels and should have a ground reference when used. See the DB Connector Reference for commonly used pins.
 - Pin 7 & 8 - RS485-A/B (Optionally RS232 with JP1 and JP2)
   These pins are also standard EIA levels but do not have components supporting the maximum RS485 1200M distances. Keep these to short distances 5-10 meters. A best practice is to use twisted pair lines. Since these connections are typically used on serial busses it should have softweare flow control enabled for ESPHome components. Specifically TX control must be enabled and this is configured in a components YAML definition.
 - Pin 7 & 8 - RS232 enable JP1 and JP2 position 1-2 soldered.
-  These are optionally setable as RS232 for addition flow control e.g. EIA level RTS DTR etc.
+  These are optionally setable as RS232 when RS485 is not required. This provisons addition flow control capability e.g. EIA level input and output DSR/RTS etc.
+<br><br/>
+
+| Name                   | Abbreviation | Direction | DB-25 pin | DE-9 pin |
+|------------------------|--------------|-----------|-----------|----------|
+| Transmitted Data       | TxD          | Out       | 2         | 3        |
+| Received Data          | RxD          | In        | 3         | 2        |
+| Request To Send        | RTS          | Out       | 4         | 7        |
+| Clear To Send          | CTS          | In        | 5         | 8        |
+| Data Terminal Ready    | DTR          | Out       | 20        | 4        |
+| Data Set Ready         | DSR          | In        | 6         | 6        |
+| Data Carrier Detect    | DCD          | In        | 8         | 1        |
+| Signal Ground          | G            | Common    | 7         | 5        |
+
+
 <br><br/>
 This completes the GREC1 Setup Guide. For addition help please join the ESPhome discord site and ping @descipher
 
