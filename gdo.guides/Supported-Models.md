@@ -6,6 +6,7 @@
 | **Chamberlain** |Chain, C253, C273, C450, C870 | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **Chamberlain** | HD750WF, LW6000WF | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **LiftMaster**  | 8155W, 8160W, 8164W, 8165W, 8500W, 8550W, 8557W, 85503, 8580W, 8587W, WLED | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
+| **LiftMaster**  | 41A5021, 41A6148, 41A6135 | Security+ 1.0   | 315MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 | **Raynor**      | Admiral, Aviator, Pilot, Ultra | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **Craftsman**   | CMXEOCG471, 54918, 54931, 57915, 57918 | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **Craftsman**   | 53964, 53920, 53990         | Security+ 1.0   | 390 MHz              | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |

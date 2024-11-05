@@ -13,7 +13,7 @@ The GREC1 is a multi purpose interfacing device specifically designed for collec
 
 ## GREC1 Device Info
 
-Availble soon from [https://www.gelidus.ca/](https://www.gelidus.ca/)
+Available soon from [https://www.gelidus.ca/](https://www.gelidus.ca/)
 
 Inside the enclosure.
 
