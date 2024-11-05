@@ -341,8 +341,19 @@ GREC1 will now come online and you can add it to  Home Assistant with the config
 J2 Pinouts
 
 <img src="/images/ec1/grec1.j2.connection.pins.jpg" alt="Select" style="width: 400px;"/>
+<br><br/>
 
-
- This completes the GREC1 Setup Guide. For addition help please join the ESPhome discord site and ping @descipher
+- Pin 1 - Impulse Photo Diode +
+  This connection should be provisioned using a single wire core cable with a stranded shield, the photo diode anode should be soldered to the core wire and cathode grounded with the shield. This signal feeds into the integrated LM393 comparator.
+- Pin 3 - Impulse Wired +
+  This is a digital logic input, it it zener clamped to limit it to +3.3v intermally, the signal should be wired along with a ground for reference.
+- Pin 5 & 6 - RS232-TX/RX
+  These connections are Standard EIA signal levels and should have a ground reference when the are used. See the DB Connector Reference for commonly used pins.
+- Pin 7 & 8 - RS485-A/B (Optionally RS232 with JP1 and JP2)
+  These pins are also standard EIA levels but do not have components supporting the maximum RS485 1200M distances. Keep these to short distances 5-10 meters. A best practice is to use twisted pair lines. Since these connections are typically used on serial busses it should have softweare flow control enabled for ESPHome components. Specifically TX control must be enabled and this is configured in a components YAML definition.
+- Pin 7 & 8 - RS232 enable JP1 and JP2 position 1-2 soldered.
+  These are optionally setable as RS232 for addition flow control e.g. EIA level RTS DTR etc.
+<br><br/>
+This completes the GREC1 Setup Guide. For addition help please join the ESPhome discord site and ping @descipher
 
 More to see @ https://www.gelidus.ca
