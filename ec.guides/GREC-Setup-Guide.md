@@ -55,7 +55,7 @@ Since we are appending to the YAML config we can skip this step. We need to add 
 The GREC1 is powered with an ESP32 as shown we need to set it and skip the next prompt.
 <br></br>
 
-![Installation](/images/add.device.skip.jpg)
+![Installation](/images/add.device.esp32.jpg)
 
 <br></br>
 Skip this step and note the generated unique key, this must be preserved in the config going forward.
