@@ -76,9 +76,9 @@ substitutions:
   friendly_name: "GDO"
   uart_tx_pin: GPIO22           # J4 Pin 1 or 3 Red CTRL
   uart_rx_pin: GPIO21           # J4 Pin 1 or 3 Red CTRL
-  dry_contact_open_pin: GPIO17  # J4 Pin 6 Green
+  dry_contact_open_pin: GPIO18  # J4 Pin 6 Green
   dry_contact_close_pin: GPIO19 # J4 Pin 7 Blue
-  dry_contact_light_pin: GPIO18 # J4 Pin 8 Orange
+  dry_contact_light_pin: GPIO17 # J4 Pin 8 Orange
   garage_door_cover_name: Garage Door
   garage_light_name: Garage Light
   garage_openings_name: Garage Openings

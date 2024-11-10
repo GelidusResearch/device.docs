@@ -1,7 +1,7 @@
 
 # GREC1 Energy Collector Setup Guide
 
-The GREC1 is a multi purpose interfacing device specifically designed for collecting data from common outputs found on energy meters. Impulse interfaces are provided for glow and wire impulse meters. RS485 and RS232 are also included for meters that send serial data such as MODBUS. The serial interfaces can alse be used for other use cases where the distance proximity is around 5-8 meters. Longer distances are not recommened for the design. The device is availble in two configurations which are directly AC powered with NEMA 5-15 plug or USB powered. We make a USB Mini vesion which includes a cable or a USB-C version without a cable.
+The GREC1 is a multi purpose interfacing device specifically designed for collecting data on energy meters. Impulse interfaces are provided for glow and wire impulse meters. RS485 and RS232 are also included for meters that send serial data such as MODBUS. The serial interfaces can alse be used for other use cases where the distance proximity is around 5-8 meters. Longer distances are not recommened for the design. The device is availble in two configurations which are directly AC powered with NEMA 5-15 plug or USB powered. We make a USB Mini vesion which includes a cable or a USB-C version without a cable.
 
 
 **Important information:**
@@ -34,7 +34,7 @@ Protective 3D enclosure (FR ABS)
 
 <img src="/images/ec1/grec1.enclosed.top.jpg" alt="GREC1" style="width: 400px;"/>
 
-## Interface Circuit Connections 
+## Interface Circuit Connections
 
 <img src="/images/ec1/grec1.j2.circuit.jpg" alt="GREC1" style="width: 800px;"/>
 
