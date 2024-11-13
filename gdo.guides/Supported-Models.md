@@ -13,6 +13,7 @@
 | **Genie**       | 4062, 4063, 7055 | Security+ 2.0   | 315, 390 MHz         | GDO Grey Term P2 | GDO White Term P3 | GDO Red Term P4 |
 | **Merlin**      | MS65MYQ | Security+ 2.0   | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P4 | GDO Grey Term P5 |
 | **Older**       | Various Screw Terminal  | Security+ 1.0   | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
+| **Known to have issues**       | 1000SDR, 2000SDR, 8500/RJ020, 8500C/RJ020C - Secplus GDO firmware command throttle feature helps but not always 100% | Security+ 1.0 with 889LM Brown outs/reboots wall panel | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 
 
 <img src="/images/gdo/qc.connector.chamberlan.jpg" alt="Chamberlan" style="width: 200px;"/><img src="/images/gdo/qc.connector.genie.jpg" alt="Genie" style="width: 200px;"/><img src="/images/gdo/screw.connector.jpg" alt="Older" style="width: 200px;"/>
