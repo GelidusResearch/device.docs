@@ -334,9 +334,9 @@ number:
     mode: box
     unit_of_measurement: "ms"
 
-  # Add Time to Close (TTC) control, 0s = disabled
+  # Add Time Till Close (TTC) control, 0s = disabled
   - platform: secplus_gdo
-    name: Time to Close
+    name: Time Till Close
     secplus_gdo_id: grgdo
     entity_category: config
     id: gdo_time_to_close

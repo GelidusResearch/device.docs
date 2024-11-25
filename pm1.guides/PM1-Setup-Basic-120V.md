@@ -95,7 +95,6 @@ substitutions:
 
 
 sensor:
-
   - platform: wifi_signal
     name: ${disp_name} WiFi Signal
     update_interval: 60s
@@ -186,9 +185,8 @@ sensor:
     state_class: total_increasing
 
 time:
-  - platform: sntp
-    id: sntp_time
-    servers: <Your Time Server>
+  - platform: homeassistant
+    id: homeassistant_time
 
 switch:
   - platform: restart
