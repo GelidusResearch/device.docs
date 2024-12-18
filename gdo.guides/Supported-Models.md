@@ -6,13 +6,14 @@
 | **Chamberlain** |Chain, C253, C273, C450, C870 | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **Chamberlain** | HD750WF, LW6000WF | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **LiftMaster**  | 8155W, 8160W, 8164W, 8165W, 8500W, 8550W, 8557W, 85503, 8580W, 8587W, WLED | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
-| **LiftMaster**  | 41A5021, 41A6148, 41A6135 | Security+ 1.0   | 315MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
+| **LiftMaster**  | 41A5021, 41A6148, 41A6135, 3265 | Security+ 1.0   | 315MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 | **Raynor**      | Admiral, Aviator, Pilot, Ultra | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **Craftsman**   | CMXEOCG471, 54918, 54931, 57915, 57918 | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **Craftsman**   | 53964, 53920, 53990         | Security+ 1.0   | 390 MHz              | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 | **Genie**       | 4062, 4063, 7055 | Security+ 2.0   | 315, 390 MHz         | GDO Grey Term P2 | GDO White Term P3 | GDO Red Term P4 |
 | **Merlin**      | MS65MYQ | Security+ 2.0   | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P4 | GDO Grey Term P5 |
-| **Older**       | Various Screw Terminal  | Security+ 1.0   | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
+| **Older**       | Various Screw Terminal | Security+ 1.0 Wire Line   | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
+| **Dry Contact**       | Various Screw Terminal 1245R  | Security+ 1.0 RF Only  | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 | **Known to have issues**       | 1000SDR, 2000SDR, 8500/RJ020, 8500C/RJ020C - Secplus GDO firmware command throttle feature helps but not always 100% | Security+ 1.0 with 889LM Brown outs/reboots wall panel | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 
 
