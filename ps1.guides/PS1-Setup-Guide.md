@@ -78,7 +78,8 @@ wifi:
 captive_portal:
 
 web_server:
-  password: !secret iot_password
+  username: !secret web_user
+  password: !secret web_password
 
 uart:
   id: ld2420_uart
@@ -166,10 +167,6 @@ number:
 #    move_threshold:
 #      name: Set Move Threshold Value
 
-    gate_move_sensitivity:
-      name: Calibration Move Sensitivity Factor
-    gate_still_sensitivity:
-      name: Calibration Still Sensitivity Factor
     gate_0:
       move_threshold:
         name: Gate 0 Move Threshold

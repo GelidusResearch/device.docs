@@ -100,7 +100,7 @@ esphome:
   friendly_name: gdo1
   comment: "ESP32: Garage Door Opener"
   libraries:
-    - https://github.com/gelidusresearch/gdolib
+    - https://github.com/gelidusresearch/gdolib.git
   platformio_options:
     build_flags:
       - -Wl,--wrap=esp_panic_handler
@@ -128,10 +128,10 @@ api:
 ota:
   platform: esphome
 
-improv_serial:
+#improv_serial:
 
-esp32_improv:
-   authorizer: false
+#esp32_improv:
+#   authorizer: none
 
 web_server:
   include_internal: true
