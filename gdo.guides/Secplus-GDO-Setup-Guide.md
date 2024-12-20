@@ -104,7 +104,7 @@ esphome:
   platformio_options:
     build_flags:
       - -Wl,--wrap=esp_panic_handler
-      - -DUART_SCLK_DEFAULT=UART_SCLK_APB
+      - -DUART_SCLK_DEFAULT=UART_SCLK_APB # Remove for esphome version 2024.12.0 (IDF 5.1.5)
 
 wifi:
   on_connect:
