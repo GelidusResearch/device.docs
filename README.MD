@@ -9,9 +9,11 @@ This repo provides Home Assistant/ESPHome configuration guides and other informa
 [GRPM1 Secondary Voltage Transformer Guide](/pm1.guides/PM1-Secondary-Voltage-Transformer-120VAC.md) - GRPM1 - Split Single Phase Power Meter
 
 
-[GRGDO1 Setup Guide](/gdo.guides/Secplus-GDO-Setup-Guide.md) - GRGDO1 - Secplus GDO Controller
+[GRGDO1 SecplusGDO Setup Guide](/gdo.guides/Secplus-GDO-Setup-Guide.md) - GRGDO1 - Secplus GDO Controller
 
-[GRGDO1 Supported Models](/gdo.guides/Supported-Models.md) - Supported Garage Doors Openers with Secplus GDO and RATGDO Firmware
+[GRGDO1 HomeKit Setup Guide](/gdo.guides/RATGDO-Homekit-Setup-Guide.md) - GRGDO1 - RATGDO Homekit GDO Controller
+
+[GRGDO1 Supported Models](/gdo.guides/Supported-Models.md) - Supported Garage Doors Openers with ESPHome Secplus GDO, ESPhome RATGDO and HomeKit RATGDO Firmware
 
 
 [GRPS1 Setup Guide](/ps1.guides/PS1-Setup-Guide.md) - PS1 Setup Guide - LD2420/LD2410C
