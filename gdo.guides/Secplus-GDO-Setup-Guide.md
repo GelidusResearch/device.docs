@@ -98,13 +98,16 @@ esp32:
 esphome:
   name: gdo1
   friendly_name: gdo1
+  #project:
+  #  name: konnected.garage-door-gdov2 #Required if using homebridge-ratgdo
+  #  version: "1.0"
   comment: "ESP32: Garage Door Opener"
   libraries:
     - https://github.com/gelidusresearch/gdolib.git
   platformio_options:
     build_flags:
       - -Wl,--wrap=esp_panic_handler
-      - -DUART_SCLK_DEFAULT=UART_SCLK_APB # Remove for esphome version 2024.12.0 (IDF 5.1.5)
+  #    - -DUART_SCLK_DEFAULT=UART_SCLK_APB # Required for esphome version older than 2024.12.0 (IDF 5.1.5)
 
 wifi:
   on_connect:
