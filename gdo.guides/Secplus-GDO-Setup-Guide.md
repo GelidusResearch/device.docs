@@ -110,6 +110,7 @@ esphome:
   #    - -DUART_SCLK_DEFAULT=UART_SCLK_APB # Required for esphome version older than 2024.12.0 (IDF 5.1.5)
 
 wifi:
+  power_save_mode: none
   on_connect:
     lambda: id(grgdo).start_gdo();
   ssid: !secret wifi_ssid
