@@ -16,7 +16,7 @@ This Secplus GDO ESP32 setup guide provides two methods to add the GRGDO1 to an 
 
 Availble from [https/www.gelidus.ca/](https/www.gelidus.ca/)
 
-Inside the enclosure.
+Inside the enclosure - v1 board.
 
 <img src="/images/gdo/grgdo1.top.bare.jpg" alt="GRGDO1" style="width: 400px;"/>
 
@@ -31,6 +31,14 @@ Inside the enclosure.
 - Follows UL/CSA specifications.
 - 1 Meter of 3 conductor 22 AWG bell wire
 - 3D printed protective safety enclosure.
+
+Inside the enclosure - v2 board differences.
+
+<img src="/images/gdo/GRGDO1.v2.USB-C.JPG" alt="GRGDO1" style="width: 400px;"/>
+
+- 4 Pin Aux port header (GND, 3.3v GPIO26, GPIO25) GPIO2 unsoldered
+- USB-C programing interface.
+
 
 Protective 3D enclosure (FR ABS)
 
@@ -79,6 +87,8 @@ substitutions:
   dry_contact_open_pin: GPIO18  # J4 Pin 6 Green
   dry_contact_close_pin: GPIO19 # J4 Pin 7 Blue
   dry_contact_light_pin: GPIO17 # J4 Pin 8 Orange
+  tof_sda_pin: GPIO26           # v1 board=GPIO3 v2(USB-C) board=GPIO26
+  tof_scl_pin: GPIO25           # v1 board=GPIO1 v2(USB-C) board=GPIO25
   garage_door_cover_name: Garage Door
   garage_light_name: Garage Light
   garage_openings_name: Garage Openings
@@ -102,8 +112,6 @@ esphome:
   #  name: konnected.garage-door-gdov2 #Required if using homebridge-ratgdo
   #  version: "1.0"
   comment: "ESP32: Garage Door Opener"
-  libraries:
-    - https://github.com/gelidusresearch/gdolib.git
   platformio_options:
     build_flags:
       - -Wl,--wrap=esp_panic_handler
@@ -124,6 +132,7 @@ wifi:
 captive_portal:
 
 logger:
+  baud_rate: 921600 # Set to 0 for GRGDO1 v1.0 hardware with the VL53L1X sensor
 
 api:
   encryption:
@@ -147,6 +156,9 @@ secplus_gdo:
   id: grgdo
   input_gdo_pin: ${uart_rx_pin}
   output_gdo_pin: ${uart_tx_pin}
+  #input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing
+  #tof_sda_pin: ${tof_sda_pin}       # If defined the ToF code will be enabled and requires number: vehicle_parked_threshold
+  #tof_scl_pin: ${tof_scl_pin}       # Required for ToF Sensor
 
 light:
   - platform: secplus_gdo
@@ -173,9 +185,21 @@ sensor:
     name: "Garage Door Openings"
     unit_of_measurement: "openings"
     icon: mdi:open-in-app
+  - platform: wifi_signal # Reports the WiFi signal strength/RSSI in dB
+    id: wifi_signal_db
+    update_interval: 60s
+    entity_category: "diagnostic"
+  - platform: copy # Reports the WiFi signal strength in %
+    source_id: wifi_signal_db
+    name: "WiFi Signal Strength"
+    filters:
+      - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
+    unit_of_measurement: "%"
+    entity_category: "diagnostic"
+    device_class: ""
   # - platform: dht
   #   model: DHT22
-  #   pin: GPIO3
+  #   pin: GPIO3 # v1 board=GPIO3 v2 board=GPIO26
   #   temperature:
   #     name: "Temperature"
   #     accuracy_decimals: 1
@@ -221,6 +245,21 @@ binary_sensor:
     secplus_gdo_id: grgdo
     type: sync
     device_class: connectivity
+  # ToF Sensor
+  # - platform: secplus_gdo
+  #   secplus_gdo_id: grgdo
+  #   id: gdo_vehicle_parked
+  #   type: vehicle_parked
+  #   name: "Vehicle parked"
+  # - platform: secplus_gdo
+  #   secplus_gdo_id: grgdo
+  #   id: gdo_vehicle_arriving
+  #   type: vehicle_arriving
+  #   name: "Vehicle arriving"
+  # - platform: secplus_gdo
+  #   secplus_gdo_id: grgdo
+  #   id: gdo_vehicle_leaving
+  #   type: vehicle_leaving
 
   - platform: gpio
     id: "${id_prefix}_dry_contact_open"
@@ -348,6 +387,16 @@ number:
     mode: box
     unit_of_measurement: "s"
 
+  # ToF Sensor - Required
+  # - platform: secplus_gdo
+  # name: "Vehicle Parked Threshold"
+  # secplus_gdo_id: grgdo
+  # entity_category: config
+  # id: gdo_vehicle_parked_threshold
+  # type: vehicle_parked_threshold
+  # mode: box
+  # unit_of_measurement: "cm"
+
 button:
   - platform: restart
     name: Restart
@@ -405,7 +454,7 @@ GRGDO1 will now come online and you can add it to Home Assistant with the config
 
 To enable flash mode on the GRGDO1 you need to depress and hold SW1 then connect your USB to serial adapter to the UART flashing connector as shown here. Once power is applied the button can be released and GRGDO1 will be in flash mode.  (Pre-connecting J1 and then plugging in the USB end is usually easier)
 
-GRGDO1 Flashing Header
+GRGDO1 v1 Board Flashing Header
 
 <img src="/images/gdo/gdo1.flash.header.JPG" alt="Select" style="width: 200px;"/>
 
@@ -416,6 +465,10 @@ TX     -&gt;   RX
 RX     &lt;-   TX
 3.3v   -    3.5v Max
 GND    -    GND</code></pre>
+
+GRGDO1 v2 Board Flash - plug into the USB-C portal
+
+<img src="/images/gdo/GRGDO1.v2.USB-C.JPG" alt="Select" style="width: 200px;"/>
 
 Prepare the firmware by selecting install on the top right of the ESPHome edit screen.
 
@@ -445,6 +498,15 @@ This example is a basic config and is the most common way to connect up the GRGD
 
 ## DHT22 Add-On Connections
 <img src="/images/gdo/dht22.grgdo1.connection.png" alt="Select" style="width: 400px;"/>
+
+## ToF Sensor Add-on
+
+The ToF sensor is keyed and connects one way by aligning the pins in the Aux port.
+
+<img src="/images/gdo/GRGDO1.ToF.VL53L1X.Add-On.JPG" alt="Select" style="width: 400px;"/>
+<img src="/images/gdo/GRGDO1.black.side.JPG" alt="Select" style="width: 400px;"/>
+
+
 
 ## Home Assistant Dashboard Examples
 
