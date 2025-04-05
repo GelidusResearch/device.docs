@@ -74,6 +74,7 @@ Skip this step and note the generated unique key, this must be preserved in the 
 Now we can edit the newly created device named gdo1, preserving the API key and add the example GRGDO1 code after the captive portal line, as shown. We provide an alternate here to ensure upstream changes are well tested for good code quality.
 
 ```yaml
+# GRGDO setup guide ver 2025.03.23
 external_components:
   - source: github://gelidusresearch/esphome-secplus-gdo
     components: [ secplus_gdo ]
@@ -84,6 +85,7 @@ substitutions:
   friendly_name: "GDO"
   uart_tx_pin: GPIO22           # J4 Pin 1 or 3 Red CTRL
   uart_rx_pin: GPIO21           # J4 Pin 1 or 3 Red CTRL
+  input_obst_pin: GPIO23        # J4 Pin 4 Grey OBST - Hardware based obstruction input option
   dry_contact_open_pin: GPIO18  # J4 Pin 6 Green
   dry_contact_close_pin: GPIO19 # J4 Pin 7 Blue
   dry_contact_light_pin: GPIO17 # J4 Pin 8 Orange
@@ -156,7 +158,7 @@ secplus_gdo:
   id: grgdo
   input_gdo_pin: ${uart_rx_pin}
   output_gdo_pin: ${uart_tx_pin}
-  #input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing
+  #input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing otherwise usex secplus data
   #tof_sda_pin: ${tof_sda_pin}       # If defined the ToF code will be enabled and requires number: vehicle_parked_threshold
   #tof_scl_pin: ${tof_scl_pin}       # Required for ToF Sensor
 
@@ -197,16 +199,21 @@ sensor:
     unit_of_measurement: "%"
     entity_category: "diagnostic"
     device_class: ""
-  # - platform: dht
-  #   model: DHT22
-  #   pin: GPIO3 # v1 board=GPIO3 v2 board=GPIO26
-  #   temperature:
-  #     name: "Temperature"
-  #     accuracy_decimals: 1
-  #   humidity:
-  #     name: "Humidity"
-  #     accuracy_decimals: 1
-  #   update_interval: 60s
+
+# Optional Add-on DHT22
+#  - platform: dht
+#    model: DHT22
+#    pin: GPIO3 # v1 board=GPIO3, v2 board=GPIO26
+#    temperature:
+#      name: "Temperature"
+#      accuracy_decimals: 1
+#      filters:                                  # °F vs default °C
+#       - lambda: return x * (9.0/5.0) + 32.0;
+#      unit_of_measurement: "°F"
+#    humidity:
+#      name: "Humidity"
+#      accuracy_decimals: 1
+#    update_interval: 60s
 
 lock:
   - platform: secplus_gdo
