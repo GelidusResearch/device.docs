@@ -267,7 +267,8 @@ binary_sensor:
   #   secplus_gdo_id: grgdo
   #   id: gdo_vehicle_leaving
   #   type: vehicle_leaving
-
+  #   name: "Vehicle leaving"
+  
   - platform: gpio
     id: "${id_prefix}_dry_contact_open"
     pin:
