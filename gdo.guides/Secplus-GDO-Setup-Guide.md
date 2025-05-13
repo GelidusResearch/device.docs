@@ -268,7 +268,7 @@ binary_sensor:
   #   id: gdo_vehicle_leaving
   #   type: vehicle_leaving
   #   name: "Vehicle leaving"
-  
+
   - platform: gpio
     id: "${id_prefix}_dry_contact_open"
     pin:
@@ -395,15 +395,24 @@ number:
     mode: box
     unit_of_measurement: "s"
 
-  # ToF Sensor - Required
+# Vehicle ToF Sensor - REQUIRED when TOF_I2C_PINS are defined
   # - platform: secplus_gdo
-  # name: "Vehicle Parked Threshold"
-  # secplus_gdo_id: grgdo
-  # entity_category: config
-  # id: gdo_vehicle_parked_threshold
-  # type: vehicle_parked_threshold
-  # mode: box
-  # unit_of_measurement: "cm"
+  #   name: "Vehicle Parked Threshold"
+  #   secplus_gdo_id: ${id_prefix}
+  #   entity_category: config
+  #   id: gdo_vehicle_parked_threshold
+  #   type: vehicle_parked_threshold
+  #   mode: box
+  #   unit_of_measurement: "cm"
+
+  # - platform: secplus_gdo
+  #   name: "Vehicle Parked Threshold Variance"
+  #   secplus_gdo_id: ${id_prefix}
+  #   entity_category: config
+  #   id: gdo_vehicle_parked_threshold_variance
+  #   type: vehicle_parked_threshold_variance
+  #   mode: box
+  #   unit_of_measurement: "cm"
 
 button:
   - platform: restart
