@@ -200,6 +200,28 @@ sensor:
     entity_category: "diagnostic"
     device_class: ""
 
+# Vehicle ToF Sensor - Required when TOF_I2C_PINS defined
+  # - platform: secplus_gdo
+  #   secplus_gdo_id: ${id_prefix}
+  #   id: gdo_tof_distance
+  #   type: tof_distance
+  #   name: "Vehicle Measured Distance"
+  #   unit_of_measurement: "cm"
+  #   internal: true
+  #   filters:
+  #     - heartbeat: 250ms
+  #     - throttle: 1s
+
+  # - platform: copy
+  #   source_id: gdo_tof_distance
+  #   name: Vehicle Distance Measure Filtered
+  #   filters:
+  #     - quantile:           # remove outliers that are not in the 90th percentile
+  #         window_size: 16
+  #         send_every: 1
+  #         quantile: 0.9
+  #     - heartbeat: 2s
+
 # Optional Add-on DHT22
 #  - platform: dht
 #    model: DHT22
