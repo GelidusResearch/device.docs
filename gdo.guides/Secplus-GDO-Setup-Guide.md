@@ -74,7 +74,7 @@ Skip this step and note the generated unique key, this must be preserved in the 
 Now we can edit the newly created device named gdo1, preserving the API key and add the example GRGDO1 code after the captive portal line, as shown. We provide an alternate here to ensure upstream changes are well tested for good code quality.
 
 ```yaml
-# GRGDO setup guide ver 2025.03.23
+# GRGDO setup guide ver 2025.05.15
 external_components:
   - source: github://gelidusresearch/esphome-secplus-gdo
     components: [ secplus_gdo ]
@@ -82,7 +82,7 @@ external_components:
 
 substitutions:
   id_prefix: grgdo1
-  friendly_name: "GDO"
+  friendly_name: "GRGDO1"
   uart_tx_pin: GPIO22           # J4 Pin 1 or 3 Red CTRL
   uart_rx_pin: GPIO21           # J4 Pin 1 or 3 Red CTRL
   input_obst_pin: GPIO23        # J4 Pin 4 Grey OBST - Hardware based obstruction input option
@@ -108,8 +108,8 @@ esp32:
     version: recommended
 
 esphome:
-  name: gdo1
-  friendly_name: gdo1
+  name: ${id_prefix}
+  friendly_name: ${friendly_name}
   #project:
   #  name: konnected.garage-door-gdov2 #Required if using homebridge-ratgdo
   #  version: "1.0"
@@ -122,12 +122,12 @@ esphome:
 wifi:
   power_save_mode: none
   on_connect:
-    lambda: id(grgdo).start_gdo();
+    lambda: id(${id_prefix}).start_gdo();
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
   ap:
-    ssid: "gdo1"
+    ssid: ${friendly_name}
     password: ""
     ap_timeout: 10s
 
@@ -155,7 +155,7 @@ status_led:
   pin: GPIO4
 
 secplus_gdo:
-  id: grgdo
+  id: grgdo1
   input_gdo_pin: ${uart_rx_pin}
   output_gdo_pin: ${uart_tx_pin}
   #input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing otherwise usex secplus data
@@ -165,13 +165,13 @@ secplus_gdo:
 light:
   - platform: secplus_gdo
     name: Garage Door Light
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     id: gdo_light
 
 cover:
   - platform: secplus_gdo
     name: Garage Door
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     id: gdo_door
 
 text_sensor:
@@ -181,7 +181,7 @@ text_sensor:
 
 sensor:
   - platform: secplus_gdo
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     id: gdo_openings
     type: openings
     name: "Garage Door Openings"
@@ -218,53 +218,53 @@ sensor:
 lock:
   - platform: secplus_gdo
     id: gdo_lock_remotes
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     name: "Lock remotes"
 
 binary_sensor:
   - platform: secplus_gdo
     name: "Garage Motion Sensor"
     id: gdo_motion
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     device_class: motion
     type: motion
   - platform: secplus_gdo
     name: "Garage Door Obstruction Sensor"
     id: gdo_obst
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     device_class: problem
     type: obstruction
   - platform: secplus_gdo
     name: "Garage Door Motor"
     id: gdo_motor
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     device_class: running
     type: motor
   - platform: secplus_gdo
     name: "Garage Button"
     id: gdo_button
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     entity_category: diagnostic
     type: button
   - platform: secplus_gdo
     name: $garage_sync_name
     id: gdo_synced
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     type: sync
     device_class: connectivity
   # ToF Sensor
   # - platform: secplus_gdo
-  #   secplus_gdo_id: grgdo
+  #   secplus_gdo_id: ${id_prefix}
   #   id: gdo_vehicle_parked
   #   type: vehicle_parked
   #   name: "Vehicle parked"
   # - platform: secplus_gdo
-  #   secplus_gdo_id: grgdo
+  #   secplus_gdo_id: ${id_prefix}
   #   id: gdo_vehicle_arriving
   #   type: vehicle_arriving
   #   name: "Vehicle arriving"
   # - platform: secplus_gdo
-  #   secplus_gdo_id: grgdo
+  #   secplus_gdo_id: ${id_prefix}
   #   id: gdo_vehicle_leaving
   #   type: vehicle_leaving
   #   name: "Vehicle leaving"
@@ -320,7 +320,7 @@ switch:
   - platform: secplus_gdo
     id: gdo_learn
     type: learn
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     name: Learn
     icon: mdi:plus-box
     entity_category: config
@@ -328,14 +328,14 @@ switch:
   - platform: secplus_gdo
     id: gdo_toggle_only
     type: toggle_only
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     name: Toggle Only
     icon: mdi:plus-box
 
 select:
   - platform: secplus_gdo
     id: gdo_protocol
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     name: protocol
     icon: mdi:settings
     entity_category: config
@@ -343,7 +343,7 @@ select:
 number:
   - platform: secplus_gdo
     name: Opening duration
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     entity_category: config
     id: gdo_open_duration
     type: open_duration
@@ -352,7 +352,7 @@ number:
 
   - platform: secplus_gdo
     name: Closing duration
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     entity_category: config
     id: gdo_close_duration
     type: close_duration
@@ -360,7 +360,7 @@ number:
 
   - platform: secplus_gdo
     name: Client ID
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     entity_category: config
     id: gdo_client_id
     type: client_id
@@ -368,7 +368,7 @@ number:
 
   - platform: secplus_gdo
     name: Rolling Code
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     entity_category: config
     id: gdo_rolling_code
     type: rolling_code
@@ -378,7 +378,7 @@ number:
   # 350ms recommened on 880LM units
   - platform: secplus_gdo
     name: Min Command Interval
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     entity_category: config
     id: gdo_min_command_interval
     type: min_command_interval
@@ -388,7 +388,7 @@ number:
   # Add Time Till Close (TTC) control, 0s = disabled
   - platform: secplus_gdo
     name: Time Till Close
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     entity_category: config
     id: gdo_time_to_close
     type: time_to_close
