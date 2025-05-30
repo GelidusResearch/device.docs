@@ -12,12 +12,12 @@
 | **Craftsman**   | 53964, 53920, 53990         | Security+ 1.0   | 390 MHz              | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 | **Merlin**      | MS65MYQ | Security+ 2.0   | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P4 | GDO Grey Term P5 |
 | **Merlin**      | MT600, MT1000 | Dry Contact | Security+ 1.0 RF Only 433Mhz | GDO Red Term P1 or P2 | GDO White Term P3 or P4 | GDO Grey Term P7 or P8 |
+| **Genie**       | H2000C | Dry Contact | Intellicode RF | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3, P4 - Open Input, P6 - Closed Input |
 | **Older**       | Various Screw Terminal | Security+ 1.0 Wire Line   | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 | **Dry Contact**       | Various Screw Terminal 1245R  | Security+ 1.0 RF Only  | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 | **Known to have issues**       | 1000SDR, 2000SDR, 8500/RJ020, 8500C/RJ020C - Secplus GDO firmware command throttle feature helps but not always 100% | Security+ 1.0 with 889LM Brown outs/reboots wall panel | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 
 
-<img src="/images/gdo/qc.connector.chamberlan.jpg" alt="Chamberlan" style="width: 200px;"/><img src="/images/gdo/screw.connector.jpg" alt="Older" style="width: 200px;"/>
-<img src="/images/gdo/qc.merlin.connections.jpg" alt="Merlin" style="width: 400px;"/>
+<img src="/images/gdo/qc.connector.chamberlan.jpg" alt="Chamberlan" style="width: 200px;"/><img src="/images/gdo/screw.connector.jpg" alt="Older" style="width: 200px;"/><img src="/images/gdo/genie.dry.6p.jpg" alt="Genie" style="width: 400px;"/><img src="/images/gdo/qc.merlin.connections.jpg" alt="Merlin" style="width: 400px;"/>
 
 [GRGDO1 Secplus GDO Controller](https://www.gelidus.ca/product/gelidus-research-ac-powered-ratgdo-compatible-board/)
