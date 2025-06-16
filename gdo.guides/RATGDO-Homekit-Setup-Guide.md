@@ -4,7 +4,9 @@ You can run the RATGDO32 HomeKit firmware implementation on a GRGDO1 by using th
 The repo contains the same code as the upstream RATGDO32 Homekit Repo with the exception of hardware pin mappings and device identity labels.
 You can also order the GRGDO1 with the HomeKit firmware preloaded.
 
-Note: The firmware is currently in early release. Changes should be expected and we recommend a USB to UART adapter for direct access to the GRGDO programming header. We are currently designing a USB-C interface model as well for convenience.
+Note: The firmware is currently in early release. Changes should be expected and we recommend a USB to UART adapter for direct access to the GRGDO1 v1 model.
+***The GRGDO1 v2 model includes a USB-C port for flashing.***
+
 
 **Important information:**
 
@@ -52,7 +54,7 @@ Once connected to the SSID simply enter your WiFi network SSID and password. The
 
 ## GDO HomeKit Setup Guide - ESP32 WEB Installer method
 
-You can use the GRGDO1 WEB Installer [URL](https://gelidusresearch.github.io/homekit-ratgdo32/flash.html) to install firmware from scratch or configure WiFi using a USB to UART Adapter.
+You can use the GRGDO1 WEB Installer [URL](https://gelidusresearch.github.io/homekit-ratgdo32/flash.html) to install firmware from scratch or configure WiFi using a USB to UART Adapter the v1 model or just use the built in USB-C port on a v2 model.
 To enable flash mode on the GRGDO1 you need to depress and hold SW1 then connect your USB to serial adapter to the UART flashing connector as shown here. Once power is applied the button can be released and the GRGDO1 will be in flash mode. (Pre-connecting J1 and then plugging in the USB end is usually easier)
 If the GRGDO1 is preloaded with Homekit firmware then it can simply be connected without enabling flash through its Improv enabled feature.
 
@@ -76,7 +78,8 @@ Once connected simply install the HOMEKIT-GRGDO1 firmware.
 <img src="/images/gdo/WEB.Installer.GRGDO1.Homekit.jpg" alt="Select" style="width: 600px;"/>
 <br></br>
 
-If the Improv feature is detected on preloaded firmware or after flashing. (A Power cycle and 10s boot time is needed after flashing the GRGDO1)
+If the Improv feature is detected on preloaded firmware or after flashing.
+A Power cycle and 10s boot time is needed after flashing the GRGDO1 v1 ans the v2 will auto reset via the USB-C port.
 The installer will offer more options:
 
 <img src="/images/gdo/WEB.Installer.GRGDO1.Homekit.Cycle.jpg" style="width: 300px;"/>
