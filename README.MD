@@ -11,6 +11,8 @@ This repo provides Home Assistant/ESPHome configuration guides and other informa
 
 [GRGDO1 SecplusGDO Setup Guide](/gdo.guides/Secplus-GDO-Setup-Guide.md) - GRGDO1 - Secplus GDO Controller
 
+[GRGDO1 SecplusGDO Component Details](/gdo.guides/SeplusGDO-Component.md) - GRGDO1 - Secplus GDO Component Details
+
 [GRGDO1 HomeKit Setup Guide](/gdo.guides/RATGDO-Homekit-Setup-Guide.md) - GRGDO1 - RATGDO Homekit GDO Controller
 
 [GRGDO1 Supported Models](/gdo.guides/Supported-Models.md) - Supported Garage Doors Openers with ESPHome Secplus GDO, ESPhome RATGDO and HomeKit RATGDO Firmware
