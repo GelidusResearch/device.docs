@@ -17,6 +17,8 @@ This repo provides Home Assistant/ESPHome configuration guides and other informa
 
 [GRGDO1 Supported Models](/gdo.guides/Supported-Models.md) - Supported Garage Doors Openers with ESPHome Secplus GDO, ESPhome RATGDO and HomeKit RATGDO Firmware
 
+[GDO - 24v models](/gdo.guides/24v-GDOs.md) - Garage Doors Openers the operate at 24v vs the common 12v models.
+
 
 [GRPS1 Setup Guide](/ps1.guides/PS1-Setup-Guide.md) - PS1 Setup Guide - LD2420/LD2410C
 
