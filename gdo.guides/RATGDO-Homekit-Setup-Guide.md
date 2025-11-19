@@ -1,5 +1,8 @@
 # GRGDO1 RATGDO Homekit Setup Guide
 
+IMPORTANT: If you have a V1 model running v1.0.5 firmware and a ToF sensor please update to v1.1.0 or greater with the local file method.
+Download: [homekit-grgdo1-rev1-v1.1.0.firmware.bin](https://github.com/GelidusResearch/homekit-ratgdo32/blob/main/docs/firmware/homekit-grgdo1-rev1-v1.1.0.firmware.bin)
+
 You can run the RATGDO32 HomeKit firmware implementation on a GRGDO1 by using the Gelidus Research Github Repo.
 The repo contains the same code as the upstream RATGDO32 Homekit Repo with the exception of hardware pin mappings and device identity labels.
 You can also order the GRGDO1 with the HomeKit firmware preloaded.
