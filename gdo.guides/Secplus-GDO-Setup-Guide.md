@@ -354,6 +354,13 @@ switch:
     name: Toggle Only
     icon: mdi:plus-box
 
+  - platform: secplus_gdo
+    id: gdo_obst_override
+    type: obst_override
+    secplus_gdo_id: grgdo
+    name: Obstruction Override
+    icon: mdi:plus-box
+
 select:
   - platform: secplus_gdo
     id: gdo_protocol
