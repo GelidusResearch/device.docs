@@ -5,7 +5,6 @@ Download: [homekit-grgdo1-rev1-v1.1.0.firmware.bin](https://github.com/GelidusRe
 
 You can run the RATGDO32 HomeKit firmware implementation on a GRGDO1 by using the Gelidus Research Github Repo.
 The repo contains the same code as the upstream RATGDO32 Homekit Repo with the exception of hardware pin mappings and device identity labels.
-Recently we have added aditional features such as Time Till Close, Closure notification (secplusv2 only), and OBST override, these are not available in RATGDO currently. The optional ToF parking sensor requires the Gelidus Repo since we use a longer range VL53L1X sensor. 
 
 You can also order the GRGDO1 with the HomeKit firmware preloaded.
 
