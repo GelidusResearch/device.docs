@@ -5,11 +5,9 @@ Download: [homekit-grgdo1-rev1-v1.1.0.firmware.bin](https://github.com/GelidusRe
 
 You can run the RATGDO32 HomeKit firmware implementation on a GRGDO1 by using the Gelidus Research Github Repo.
 The repo contains the same code as the upstream RATGDO32 Homekit Repo with the exception of hardware pin mappings and device identity labels.
+Recently we have added aditional features such as Time Till Close, Closure notification (secplusv2 only), and OBST override, these are not available in RATGDO currently. The optional ToF parking sensor requires the Gelidus Repo since we use a longer range VL53L1X sensor. 
+
 You can also order the GRGDO1 with the HomeKit firmware preloaded.
-
-Note: The firmware is currently in early release. Changes should be expected and we recommend a USB to UART adapter for direct access to the GRGDO1 v1 model.
-***The GRGDO1 v2 model includes a USB-C port for flashing.***
-
 
 **Important information:**
 
@@ -57,7 +55,7 @@ Once connected to the SSID simply enter your WiFi network SSID and password. The
 
 ## GDO HomeKit Setup Guide - ESP32 WEB Installer method
 
-You can use the GRGDO1 WEB Installer [URL](https://gelidusresearch.github.io/homekit-ratgdo32/flash.html) to install firmware from scratch or configure WiFi using a USB to UART Adapter the v1 model or just use the built in USB-C port on a v2 model.
+You can use the GRGDO1 WEB Installer [URL](https://gelidusresearch.github.io/homekit-ratgdo32/flash.html) to install firmware from scratch or configure WiFi using a USB to UART Adapter the v1 model or just use the built in USB-C port on any v2 or greater model. v1 models are no longer produced.
 To enable flash mode on the GRGDO1 you need to depress and hold SW1 then connect your USB to serial adapter to the UART flashing connector as shown here. Once power is applied the button can be released and the GRGDO1 will be in flash mode. (Pre-connecting J1 and then plugging in the USB end is usually easier)
 If the GRGDO1 is preloaded with Homekit firmware then it can simply be connected without enabling flash through its Improv enabled feature.
 
