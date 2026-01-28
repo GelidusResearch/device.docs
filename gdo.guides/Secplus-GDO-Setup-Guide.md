@@ -225,7 +225,7 @@ sensor:
 # Optional Add-on DHT22
 #  - platform: dht
 #    model: DHT22
-#    pin: GPIO3 # v1 board=GPIO3, v2 board=GPIO26
+#    pin: GPIO16 # v1 board=GPIO3, v2 board=GPIO26 (AUX1 4 Pin) or GPIO16 (AUX2 3 Pin)
 #    temperature:
 #      name: "Temperature"
 #      accuracy_decimals: 1
@@ -352,6 +352,13 @@ switch:
     type: toggle_only
     secplus_gdo_id: ${id_prefix}
     name: Toggle Only
+    icon: mdi:plus-box
+
+  - platform: secplus_gdo
+    id: gdo_obst_override
+    type: obst_override
+    secplus_gdo_id: grgdo
+    name: Obstruction Override
     icon: mdi:plus-box
 
 select:
