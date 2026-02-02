@@ -7,6 +7,7 @@
 | **Chamberlain** | HD750WF, LW6000WF | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **Chamberlain** | RJO101 | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **Chamberlain** | 41AC060-1, 1600AD | Security+ 1.0   | 315 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
+| **Chamberlain** | ML700EV, ML1000EV | Security+ 2.0   | 315 MHz ?    | GDO Red Term P0 | GDO White Term P2 | GDO Grey Term P4 |
 | **LiftMaster**  | 8155W, 8160W, 8164W, 8165W, 8500W, 8550W, 8557W, 85503, 8580W, 8587W, WLED | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
 | **LiftMaster**  | 41A5021, 41A6148, 41A6135, 3265 | Security+ 1.0   | 315MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 | **Raynor**      | Admiral, Aviator, Pilot, Ultra | Security+ 2.0   | 310, 315, 390 MHz    | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P4 |
@@ -21,6 +22,6 @@
 | **Known to have issues do to v1/v2 confusion**       | 1000SDR, 2000SDR, 8500/RJ020, 8500C/RJ020C - RATGDO is recommened with these. | Security+ 1.0 with 889LM Brown outs/reboots wall panel | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 or P3| GDO Grey Term P4 |
 
 
-<img src="/images/gdo/qc.connector.chamberlan.jpg" alt="Chamberlan" style="width: 200px;"/><img src="/images/gdo/screw.connector.jpg" alt="Older" style="width: 200px;"/><img src="/images/gdo/genie.dry.6p.jpg" alt="Genie" style="width: 400px;"/><img src="/images/gdo/qc.merlin.connections.jpg" alt="Merlin" style="width: 400px;"/>
+<img src="/images/gdo/qc.connector.chamberlan.jpg" alt="Chamberlan" style="width: 200px;"/><img src="/images/gdo/screw.connector.jpg" alt="Older" style="width: 200px;"/><img src="/images/gdo/genie.dry.6p.jpg" alt="Genie" style="width: 400px;"/><img src="/images/gdo/qc.merlin.connections.jpg" alt="Merlin" style="width: 400px;"/><img src="/images/gdo/Common.EU.Models.jpg" alt="EU/Other Models" style="width: 400px;"/>
 
 [GRGDO1 Secplus GDO Controller](https://www.gelidus.ca/product/gelidus-research-ratgdo-alternative-board-v2-usb-c/)
