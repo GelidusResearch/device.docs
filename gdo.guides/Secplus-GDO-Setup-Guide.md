@@ -357,7 +357,7 @@ switch:
   - platform: secplus_gdo
     id: gdo_obst_override
     type: obst_override
-    secplus_gdo_id: grgdo
+    secplus_gdo_id: ${id_prefix}
     name: Obstruction Override
     icon: mdi:plus-box
 
