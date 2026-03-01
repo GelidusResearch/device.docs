@@ -74,11 +74,15 @@ Skip this step and note the generated unique key, this must be preserved in the 
 Now we can edit the newly created device named gdo1, preserving the API key and add the example GRGDO1 code after the captive portal line, as shown. We provide an alternate here to ensure upstream changes are well tested for good code quality.
 
 ```yaml
-# GRGDO setup guide ver 2025.05.15
+# GRGDO setup guide ver 2026.02.27
 external_components:
-  - source: github://gelidusresearch/esphome-secplus-gdo
+  - source: github://GelidusResearch/esphome-secplus-gdo@2026.02.27 #pre release @2026.02.27 can be removed after its a current release
     components: [ secplus_gdo ]
     refresh: 0s
+# ToF Sensor
+#  - source: github://GelidusResearch/ToF
+#    components: [vl53l1x]
+#    refresh: 0s
 
 substitutions:
   id_prefix: grgdo1
@@ -89,6 +93,7 @@ substitutions:
   dry_contact_open_pin: GPIO18  # J4 Pin 6 Green
   dry_contact_close_pin: GPIO19 # J4 Pin 7 Blue
   dry_contact_light_pin: GPIO17 # J4 Pin 8 Orange
+  dht22_pin: GPIO27             # V2 or older AUX2=GPIO27 AUX1=GPIO26 V1=GPIO3
   tof_sda_pin: GPIO26           # v1 board=GPIO3 v2(USB-C) board=GPIO26
   tof_scl_pin: GPIO25           # v1 board=GPIO1 v2(USB-C) board=GPIO25
   garage_door_cover_name: Garage Door
@@ -110,14 +115,13 @@ esp32:
 esphome:
   name: ${id_prefix}
   friendly_name: ${friendly_name}
-  #project:
-  #  name: konnected.garage-door-gdov2 #Required if using homebridge-ratgdo
-  #  version: "1.0"
+#  project:
+#    name: Gelidus Research.GRGDO1 Garage Door Controller #Required if using homebridge-ratgdo
+#    version: "1.0"
   comment: "ESP32: Garage Door Opener"
   platformio_options:
     build_flags:
       - -Wl,--wrap=esp_panic_handler
-  #    - -DUART_SCLK_DEFAULT=UART_SCLK_APB # Required for esphome version older than 2024.12.0 (IDF 5.1.5)
 
 wifi:
   power_save_mode: none
@@ -134,7 +138,7 @@ wifi:
 captive_portal:
 
 logger:
-  baud_rate: 921600 # Set to 0 for GRGDO1 v1.0 hardware with the VL53L1X sensor
+  baud_rate: 115200 # Set to 0 for GRGDO1 v1.0 hardware with the VL53L1X sensor
 
 api:
   encryption:
@@ -143,13 +147,11 @@ api:
 ota:
   platform: esphome
 
-#improv_serial:
-
-#esp32_improv:
-#   authorizer: none
+improv_serial:
 
 web_server:
-  include_internal: true
+  version: 3
+  local: true
 
 status_led:
   pin: GPIO4
@@ -158,9 +160,31 @@ secplus_gdo:
   id: grgdo1
   input_gdo_pin: ${uart_rx_pin}
   output_gdo_pin: ${uart_tx_pin}
-  #input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing otherwise usex secplus data
-  #tof_sda_pin: ${tof_sda_pin}       # If defined the ToF code will be enabled and requires number: vehicle_parked_threshold
-  #tof_scl_pin: ${tof_scl_pin}       # Required for ToF Sensor
+#  tof_distance_sensor: gdo_tof_distance_filtered  #post esphome 2026.1.x
+#  input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing otherwise usex secplus data
+#  tof_sda_pin: ${tof_sda_pin}       # pre esphome 2026.2.0
+#  tof_scl_pin: ${tof_scl_pin}       # pre esphome 2026.2.0
+
+#i2c:
+#  id: bus_a
+#  sda: ${tof_sda_pin}
+#  scl: ${tof_scl_pin}
+#  scan: true
+#  frequency: 400kHz
+
+#vl53l1x:
+#  id: gdo_tof_distance
+#  name: "Vehicle Measured Distance"
+#  i2c_id: bus_a
+#  address: 0x29
+#  long_range: true
+#  timing_budget: 100ms
+#  timeout: 250ms
+#  update_interval: 1s
+#  internal: true
+#  filters:
+#    - lambda: return x * 100.0;
+#  unit_of_measurement: "cm"
 
 light:
   - platform: secplus_gdo
@@ -201,26 +225,26 @@ sensor:
     device_class: ""
 
 # Vehicle ToF Sensor - Required when TOF_I2C_PINS defined
-  # - platform: secplus_gdo
-  #   secplus_gdo_id: ${id_prefix}
-  #   id: gdo_tof_distance
-  #   type: tof_distance
-  #   name: "Vehicle Measured Distance"
-  #   unit_of_measurement: "cm"
-  #   internal: true
-  #   filters:
-  #     - heartbeat: 250ms
-  #     - throttle: 1s
+#  - platform: secplus_gdo
+#    secplus_gdo_id: ${id_prefix}
+#    id: gdo_tof_distance
+#    type: tof_distance
+#    name: "Vehicle Measured Distance"
+#    unit_of_measurement: "cm"
+#    internal: true
+#    filters:
+#      - heartbeat: 250ms
+#      - throttle: 1s
 
-  # - platform: copy
-  #   source_id: gdo_tof_distance
-  #   name: Vehicle Distance Measure Filtered
-  #   filters:
-  #     - quantile:           # remove outliers that are not in the 90th percentile
-  #         window_size: 16
-  #         send_every: 1
-  #         quantile: 0.9
-  #     - heartbeat: 2s
+#   - platform: copy
+#     source_id: gdo_tof_distance
+#     name: Vehicle Distance Measure Filtered
+#     filters:
+#       - quantile:           # remove outliers that are not in the 90th percentile
+#           window_size: 16
+#           send_every: 1
+#           quantile: 0.9
+#       - heartbeat: 2s
 
 # Optional Add-on DHT22
 #  - platform: dht
@@ -274,22 +298,24 @@ binary_sensor:
     secplus_gdo_id: ${id_prefix}
     type: sync
     device_class: connectivity
-  # ToF Sensor
-  # - platform: secplus_gdo
-  #   secplus_gdo_id: ${id_prefix}
-  #   id: gdo_vehicle_parked
-  #   type: vehicle_parked
-  #   name: "Vehicle parked"
-  # - platform: secplus_gdo
-  #   secplus_gdo_id: ${id_prefix}
-  #   id: gdo_vehicle_arriving
-  #   type: vehicle_arriving
-  #   name: "Vehicle arriving"
-  # - platform: secplus_gdo
-  #   secplus_gdo_id: ${id_prefix}
-  #   id: gdo_vehicle_leaving
-  #   type: vehicle_leaving
-  #   name: "Vehicle leaving"
+# ToF Sensor
+#  - platform: secplus_gdo
+#    secplus_gdo_id: ${id_prefix}
+#    id: gdo_vehicle_parked
+#    type: vehicle_parked
+#    name: "Vehicle parked"
+
+#  - platform: secplus_gdo
+#    secplus_gdo_id: ${id_prefix}
+#    id: gdo_vehicle_arriving
+#    type: vehicle_arriving
+#    name: "Vehicle arriving"
+
+#  - platform: secplus_gdo
+#    secplus_gdo_id: ${id_prefix}
+#    id: gdo_vehicle_leaving
+#    type: vehicle_leaving
+#    name: "Vehicle leaving"
 
   - platform: gpio
     id: "${id_prefix}_dry_contact_open"
@@ -475,7 +501,7 @@ button:
 
 ## GDO Setup Guide - Captive Portal Method
 
-With the GRGDO1 already powered up for at least 1 minute use a phone or other capable device connect to the GRGDO1 default preinstalled captive portal AP SSID named gdo1
+With the GRGDO1 already powered up for about 30 seconds use a phone or other capable device connect to the GRGDO1 default preinstalled captive portal AP SSID named gdo1
 <br><br>
 <img src="/images/gdo/gdo1.captive.portal.jpg" alt="Select" style="width: 400px;"/>
 <br><br>
