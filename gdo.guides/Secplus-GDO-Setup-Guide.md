@@ -172,20 +172,6 @@ secplus_gdo:
 #  scan: true
 #  frequency: 400kHz
 
-#vl53l1x:
-#  id: gdo_tof_distance
-#  name: "Vehicle Measured Distance"
-#  i2c_id: bus_a
-#  address: 0x29
-#  long_range: true
-#  timing_budget: 100ms
-#  timeout: 250ms
-#  update_interval: 1s
-#  internal: true
-#  filters:
-#    - lambda: return x * 100.0;
-#  unit_of_measurement: "cm"
-
 light:
   - platform: secplus_gdo
     name: Garage Door Light
@@ -223,6 +209,20 @@ sensor:
     unit_of_measurement: "%"
     entity_category: "diagnostic"
     device_class: ""
+
+#  - platform: vl53l1x
+#    id: gdo_tof_distance
+#    name: "Vehicle Measured Distance"
+#    i2c_id: bus_a
+#    address: 0x29
+#    long_range: true
+#    timing_budget: 100ms
+#    timeout: 250ms
+#    update_interval: 1s
+#    internal: true
+#    filters:
+#      - lambda: return x * 100.0;
+#    unit_of_measurement: "cm"
 
 # Vehicle ToF Sensor - Required when TOF_I2C_PINS defined
 #  - platform: secplus_gdo
