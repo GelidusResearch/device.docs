@@ -249,7 +249,7 @@ sensor:
 # Optional Add-on DHT22
 #  - platform: dht
 #    model: DHT22
-#    pin: GPIO16 # v1 board=GPIO3, v2 board=GPIO26 (AUX1 4 Pin) or GPIO16 (AUX2 3 Pin)
+#    pin: ${dht22_pin} # v1 board=GPIO3, v2.x board=GPIO26 (AUX1 4 Pin) or GPIO27 (AUX2 3 Pin)
 #    temperature:
 #      name: "Temperature"
 #      accuracy_decimals: 1
