@@ -74,9 +74,9 @@ Skip this step and note the generated unique key, this must be preserved in the 
 Now we can edit the newly created device named gdo1, preserving the API key and add the example GRGDO1 code after the captive portal line, as shown. We provide an alternate here to ensure upstream changes are well tested for good code quality.
 
 ```yaml
-# GRGDO setup guide ver 2026.02.27
+# GRGDO setup guide ver 2026.03.18
 external_components:
-  - source: github://GelidusResearch/esphome-secplus-gdo@2026.02.27 #pre release @2026.02.27 can be removed after its a current release
+  - source: github://GelidusResearch/esphome-secplus-gdo
     components: [ secplus_gdo ]
     refresh: 0s
 # ToF Sensor
@@ -163,7 +163,7 @@ secplus_gdo:
 #  tof_distance_sensor: gdo_tof_distance_filtered  #post esphome 2026.1.x - required for VL53L1X ToF
 #  tof_distance_sensor: gdo_tof_distance           # Required for HC-SR04 ultrasonic distance sensor
 
-#  input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing otherwise usex secplus data
+#  input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing otherwise uses secplus data
 #  tof_sda_pin: ${tof_sda_pin}       # pre esphome 2026.2.0 enable for ether VL53L1X or HC-SR04 sensors
 #  tof_scl_pin: ${tof_scl_pin}       # pre esphome 2026.2.0 enable for ether VL53L1X or HC-SR04 sensors
 
@@ -261,7 +261,7 @@ sensor:
 # Optional Add-on DHT22
 #  - platform: dht
 #    model: DHT22
-#    pin: GPIO16 # v1 board=GPIO3, v2 board=GPIO26 (AUX1 4 Pin) or GPIO16 (AUX2 3 Pin)
+#    pin: ${dht22_pin} # v1 board=GPIO3, v2.x board=GPIO26 (AUX1 4 Pin) or GPIO27 (AUX2 3 Pin)
 #    temperature:
 #      name: "Temperature"
 #      accuracy_decimals: 1
