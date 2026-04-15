@@ -160,11 +160,15 @@ secplus_gdo:
   id: grgdo1
   input_gdo_pin: ${uart_rx_pin}
   output_gdo_pin: ${uart_tx_pin}
-#  tof_distance_sensor: gdo_tof_distance_filtered  #post esphome 2026.1.x
-#  input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing otherwise usex secplus data
-#  tof_sda_pin: ${tof_sda_pin}       # pre esphome 2026.2.0
-#  tof_scl_pin: ${tof_scl_pin}       # pre esphome 2026.2.0
+#  tof_distance_sensor: gdo_tof_distance_filtered  #post esphome 2026.1.x - required for VL53L1X ToF
+#  tof_distance_sensor: gdo_tof_distance           # Required for HC-SR04 ultrasonic distance sensor
 
+#  input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing otherwise usex secplus data
+#  tof_sda_pin: ${tof_sda_pin}       # pre esphome 2026.2.0 enable for ether VL53L1X or HC-SR04 sensors
+#  tof_scl_pin: ${tof_scl_pin}       # pre esphome 2026.2.0 enable for ether VL53L1X or HC-SR04 sensors
+
+
+# required for a VL53L1X ToF
 #i2c:
 #  id: bus_a
 #  sda: ${tof_sda_pin}
@@ -210,6 +214,14 @@ sensor:
     entity_category: "diagnostic"
     device_class: ""
 
+# Required for the HC-SR04 ultrasonic distance sensor
+#  - platform: ultrasonic
+#    id: gdo_tof_distance
+#    trigger_pin: ${tof_sda_pin}
+#    echo_pin: ${tof_scl_pin}
+#    name: "Vehicle Distance"
+#    update_interval: 1s
+
 #  - platform: vl53l1x
 #    id: gdo_tof_distance
 #    name: "Vehicle Measured Distance"
@@ -224,7 +236,7 @@ sensor:
 #      - lambda: return x * 100.0;
 #    unit_of_measurement: "cm"
 
-# Vehicle ToF Sensor - Required when TOF_I2C_PINS defined
+# Vehicle ToF Sensor - Required when TOF_I2C_PINS defined (Either the VL53L1X or the HC-SR04)
 #  - platform: secplus_gdo
 #    secplus_gdo_id: ${id_prefix}
 #    id: gdo_tof_distance
@@ -298,7 +310,7 @@ binary_sensor:
     secplus_gdo_id: ${id_prefix}
     type: sync
     device_class: connectivity
-# ToF Sensor
+# Required for either the VL53L1X or the HC-SR04
 #  - platform: secplus_gdo
 #    secplus_gdo_id: ${id_prefix}
 #    id: gdo_vehicle_parked
@@ -450,7 +462,7 @@ number:
     mode: box
     unit_of_measurement: "s"
 
-# Vehicle ToF Sensor - REQUIRED when TOF_I2C_PINS are defined
+# Required for either the VL53L1X or the HC-SR04
   # - platform: secplus_gdo
   #   name: "Vehicle Parked Threshold"
   #   secplus_gdo_id: ${id_prefix}
