@@ -140,9 +140,10 @@ captive_portal:
 logger:
   baud_rate: 115200 # Set to 0 for GRGDO1 v1.0 hardware with the VL53L1X sensor
 
+# You should secure your HA API see: https://esphome.io/components/api/ there is a tool mid page to randomly generate a key
 api:
-  encryption:
-    key: "YOUR API KEY GOES HERE"
+#  encryption:
+#    key: "YOUR API KEY GOES HERE"
 
 ota:
   platform: esphome
@@ -164,8 +165,8 @@ secplus_gdo:
 #  tof_distance_sensor: gdo_tof_distance           # Required for HC-SR04 ultrasonic distance sensor
 
 #  input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing otherwise uses secplus data
-#  tof_sda_pin: ${tof_sda_pin}       # pre esphome 2026.2.0 enable for ether VL53L1X or HC-SR04 sensors
-#  tof_scl_pin: ${tof_scl_pin}       # pre esphome 2026.2.0 enable for ether VL53L1X or HC-SR04 sensors
+#  tof_sda_pin: ${tof_sda_pin}       # pre esphome 2026.2.0 enable for VL53L1X
+#  tof_scl_pin: ${tof_scl_pin}       # pre esphome 2026.2.0 enable for VL53L1X
 
 
 # required for a VL53L1X ToF
@@ -221,7 +222,11 @@ sensor:
 #    echo_pin: ${tof_scl_pin}
 #    name: "Vehicle Distance"
 #    update_interval: 1s
+#    filters:
+#      - lambda: return x * 100.0;
+#    unit_of_measurement: "cm"
 
+# Vehicle ToF Sensor - Required when TOF_I2C_PINS defined for the VL53L1X
 #  - platform: vl53l1x
 #    id: gdo_tof_distance
 #    name: "Vehicle Measured Distance"
@@ -236,7 +241,7 @@ sensor:
 #      - lambda: return x * 100.0;
 #    unit_of_measurement: "cm"
 
-# Vehicle ToF Sensor - Required when TOF_I2C_PINS defined (Either the VL53L1X or the HC-SR04)
+# Vehicle ToF Sensor - Required for the VL53L1X
 #  - platform: secplus_gdo
 #    secplus_gdo_id: ${id_prefix}
 #    id: gdo_tof_distance
@@ -248,6 +253,7 @@ sensor:
 #      - heartbeat: 250ms
 #      - throttle: 1s
 
+# Vehicle ToF Sensor - Required for the VL53L1X
 #   - platform: copy
 #     source_id: gdo_tof_distance
 #     name: Vehicle Distance Measure Filtered
