@@ -279,6 +279,38 @@ sensor:
 #      accuracy_decimals: 1
 #    update_interval: 60s
 
+# Optional Add-on ENS160/AHT20
+#  - platform: aht10
+#    address: 0x38
+#    variant: AHT20
+#    temperature:
+#      id: id_temperature_sensor
+#      name: "AHT20 Temperature"
+#    humidity:
+#      id: id_humidity_sensor
+#      name: "AHT20 Humidity"
+#    update_interval: 60s
+#  - platform: ens160_i2c
+#    address: 0x53
+#    eco2:
+#      name: "ENS160 eCO2"
+#    tvoc:
+#      name: "ENS160 TVOC"
+#    aqi:
+#      name: "ENS160 AQI"
+#    compensation:
+#      temperature: id_temperature_sensor
+#      humidity: id_humidity_sensor
+#    update_interval: 90s
+
+# GRAIRQ1 requires i2c
+#i2c:
+#  sda: ${tof_sda_pin}
+#  scl: ${tof_scl_pin}
+#  id: bus_a
+#  frequency: 100kHz
+#  scan: False
+
 lock:
   - platform: secplus_gdo
     id: gdo_lock_remotes
