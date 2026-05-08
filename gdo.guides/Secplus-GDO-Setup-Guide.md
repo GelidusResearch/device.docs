@@ -114,6 +114,7 @@ esp32:
 
 esphome:
   name: ${id_prefix}
+  min_version: "2026.2.0"
   friendly_name: ${friendly_name}
 #  project:
 #    name: Gelidus Research.GRGDO1 Garage Door Controller #Required if using homebridge-ratgdo
