@@ -96,6 +96,8 @@ substitutions:
   dht22_pin: GPIO27             # V2 or older AUX2=GPIO27 AUX1=GPIO26 V1=GPIO3
   tof_sda_pin: GPIO26           # v1 board=GPIO3 v2(USB-C) board=GPIO26
   tof_scl_pin: GPIO25           # v1 board=GPIO1 v2(USB-C) board=GPIO25
+  aqs_sda_pin: GPIO25
+  aqs_scl_pin: GPIO26
   garage_door_cover_name: Garage Door
   garage_light_name: Garage Light
   garage_openings_name: Garage Openings
@@ -306,8 +308,8 @@ sensor:
 
 # GRAIRQ1 requires i2c
 #i2c:
-#  sda: ${tof_sda_pin}
-#  scl: ${tof_scl_pin}
+#  sda: ${aqs_sda_pin}
+#  scl: ${aqs_scl_pin}
 #  id: bus_a
 #  frequency: 100kHz
 #  scan: False
