@@ -258,6 +258,7 @@ sensor:
 
 # Vehicle ToF Sensor - Required for the VL53L1X
 #   - platform: copy
+#     id: gdo_tof_distance_filtered      
 #     source_id: gdo_tof_distance
 #     name: Vehicle Distance Measure Filtered
 #     filters:
