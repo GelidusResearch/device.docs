@@ -96,8 +96,8 @@ substitutions:
   dht22_pin: GPIO27             # V2 or older AUX2=GPIO27 AUX1=GPIO26 V1=GPIO3
   tof_sda_pin: GPIO26           # v1 board=GPIO3 v2(USB-C) board=GPIO26
   tof_scl_pin: GPIO25           # v1 board=GPIO1 v2(USB-C) board=GPIO25
-  aqs_sda_pin: GPIO25
-  aqs_scl_pin: GPIO26
+  i2c_sda_pin: GPIO25
+  i2c_scl_pin: GPIO26
   garage_door_cover_name: Garage Door
   garage_light_name: Garage Light
   garage_openings_name: Garage Openings
@@ -258,7 +258,7 @@ sensor:
 
 # Vehicle ToF Sensor - Required for the VL53L1X
 #   - platform: copy
-#     id: gdo_tof_distance_filtered      
+#     id: gdo_tof_distance_filtered
 #     source_id: gdo_tof_distance
 #     name: Vehicle Distance Measure Filtered
 #     filters:
@@ -282,6 +282,18 @@ sensor:
 #      name: "Humidity"
 #      accuracy_decimals: 1
 #    update_interval: 60s
+
+# Optional Add-on AHT20
+#  - platform: aht10
+#    address: 0x38
+#    variant: AHT20
+#    temperature:
+#      id: id_temperature_sensor
+#      name: "AHT20 Temperature"
+#    humidity:
+#      id: id_humidity_sensor
+#      name: "AHT20 Humidity"
+#    update_interval: 10s
 
 # Optional Add-on ENS160/AHT20
 #  - platform: aht10
@@ -309,8 +321,8 @@ sensor:
 
 # GRAIRQ1 requires i2c
 #i2c:
-#  sda: ${aqs_sda_pin}
-#  scl: ${aqs_scl_pin}
+#  sda: ${i2c_sda_pin}
+#  scl: ${i2c_scl_pin}
 #  id: bus_a
 #  frequency: 100kHz
 #  scan: False
