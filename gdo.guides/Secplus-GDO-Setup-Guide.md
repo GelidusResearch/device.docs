@@ -96,6 +96,8 @@ substitutions:
   dht22_pin: GPIO27             # V2 or older AUX2=GPIO27 AUX1=GPIO26 V1=GPIO3
   tof_sda_pin: GPIO26           # v1 board=GPIO3 v2(USB-C) board=GPIO26
   tof_scl_pin: GPIO25           # v1 board=GPIO1 v2(USB-C) board=GPIO25
+  i2c_sda_pin: GPIO25
+  i2c_scl_pin: GPIO26
   garage_door_cover_name: Garage Door
   garage_light_name: Garage Light
   garage_openings_name: Garage Openings
@@ -114,6 +116,7 @@ esp32:
 
 esphome:
   name: ${id_prefix}
+  min_version: "2026.2.0"
   friendly_name: ${friendly_name}
 #  project:
 #    name: Gelidus Research.GRGDO1 Garage Door Controller #Required if using homebridge-ratgdo
@@ -140,9 +143,10 @@ captive_portal:
 logger:
   baud_rate: 115200 # Set to 0 for GRGDO1 v1.0 hardware with the VL53L1X sensor
 
+# You should secure your HA API see: https://esphome.io/components/api/ there is a tool mid page to randomly generate a key
 api:
-  encryption:
-    key: "YOUR API KEY GOES HERE"
+#  encryption:
+#    key: "YOUR API KEY GOES HERE"
 
 ota:
   platform: esphome
@@ -164,8 +168,8 @@ secplus_gdo:
 #  tof_distance_sensor: gdo_tof_distance           # Required for HC-SR04 ultrasonic distance sensor
 
 #  input_obst_pin: ${input_obst_pin} # Used to enable physical pin obstruction sensing otherwise uses secplus data
-#  tof_sda_pin: ${tof_sda_pin}       # pre esphome 2026.2.0 enable for ether VL53L1X or HC-SR04 sensors
-#  tof_scl_pin: ${tof_scl_pin}       # pre esphome 2026.2.0 enable for ether VL53L1X or HC-SR04 sensors
+#  tof_sda_pin: ${tof_sda_pin}       # pre esphome 2026.2.0 enable for VL53L1X
+#  tof_scl_pin: ${tof_scl_pin}       # pre esphome 2026.2.0 enable for VL53L1X
 
 
 # required for a VL53L1X ToF
@@ -221,7 +225,11 @@ sensor:
 #    echo_pin: ${tof_scl_pin}
 #    name: "Vehicle Distance"
 #    update_interval: 1s
+#    filters:
+#      - lambda: return x * 100.0;
+#    unit_of_measurement: "cm"
 
+# Vehicle ToF Sensor - Required when TOF_I2C_PINS defined for the VL53L1X
 #  - platform: vl53l1x
 #    id: gdo_tof_distance
 #    name: "Vehicle Measured Distance"
@@ -236,7 +244,7 @@ sensor:
 #      - lambda: return x * 100.0;
 #    unit_of_measurement: "cm"
 
-# Vehicle ToF Sensor - Required when TOF_I2C_PINS defined (Either the VL53L1X or the HC-SR04)
+# Vehicle ToF Sensor - Required for the VL53L1X
 #  - platform: secplus_gdo
 #    secplus_gdo_id: ${id_prefix}
 #    id: gdo_tof_distance
@@ -248,7 +256,9 @@ sensor:
 #      - heartbeat: 250ms
 #      - throttle: 1s
 
+# Vehicle ToF Sensor - Required for the VL53L1X
 #   - platform: copy
+#     id: gdo_tof_distance_filtered
 #     source_id: gdo_tof_distance
 #     name: Vehicle Distance Measure Filtered
 #     filters:
@@ -272,6 +282,50 @@ sensor:
 #      name: "Humidity"
 #      accuracy_decimals: 1
 #    update_interval: 60s
+
+# Optional Add-on AHT20
+#  - platform: aht10
+#    address: 0x38
+#    variant: AHT20
+#    temperature:
+#      id: id_temperature_sensor
+#      name: "AHT20 Temperature"
+#    humidity:
+#      id: id_humidity_sensor
+#      name: "AHT20 Humidity"
+#    update_interval: 10s
+
+# Optional Add-on ENS160/AHT20
+#  - platform: aht10
+#    address: 0x38
+#    variant: AHT20
+#    temperature:
+#      id: id_temperature_sensor
+#      name: "AHT20 Temperature"
+#    humidity:
+#      id: id_humidity_sensor
+#      name: "AHT20 Humidity"
+#    update_interval: 60s
+#  - platform: ens160_i2c
+#    address: 0x53
+#    eco2:
+#      name: "ENS160 eCO2"
+#    tvoc:
+#      name: "ENS160 TVOC"
+#    aqi:
+#      name: "ENS160 AQI"
+#    compensation:
+#      temperature: id_temperature_sensor
+#      humidity: id_humidity_sensor
+#    update_interval: 90s
+
+# GRAIRQ1 requires i2c
+#i2c:
+#  sda: ${i2c_sda_pin}
+#  scl: ${i2c_scl_pin}
+#  id: bus_a
+#  frequency: 100kHz
+#  scan: False
 
 lock:
   - platform: secplus_gdo

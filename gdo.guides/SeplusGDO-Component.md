@@ -32,7 +32,7 @@
 | **number** (close_duration) | - | 0 | 240 | 0.1 | sec |
 | **number** (client_id) | - | 0x666 | 0x7ff666 | 1 | - |
 | **number** (rolling_code) | - | 0 | 0xFFFFFF | 1 | - |
-| **number** (min_command_interval) | - | 250 | 1500 | 50 | ms |
+| **number** (min_command_interval) | - | 50 | 450 | 50 | ms |
 | **number** (time_to_close) | - | 0 | 65535 | 60 | sec |
 | **number** (vehicle_parked_threshold) | - | 10 | 400 | 1 | - |
 | **number** (vehicle_parked_threshold_variance) | - | 2 | 15 | 1 | - |
