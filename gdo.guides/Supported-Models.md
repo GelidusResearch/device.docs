@@ -19,6 +19,7 @@
 | **Genie**       | H2000C | Dry Contact | Intellicode RF | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3, P4 - Open Input, P6 - Closed Input |
 | **Older**       | Various Screw Terminal | Security+ 1.0 Wire Line   | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 | **Dry Contact**       | Various Screw Terminal 1245R  | Security+ 1.0 RF Only  | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
+| **SkyLink/MasterCraft**       | All Models  | Dry contact - V2 USB-C Powered Only | 315, 390 MHz         | GDO P4 | GDO P3 | GDO P3 |
 | **Known to have issues do to v1/v2 confusion**       | 1000SDR, 2000SDR, 8500/RJ020, 8500C/RJ020C - RATGDO is recommened with these. | Security+ 1.0 with 889LM Brown outs/reboots wall panel | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 or P3| GDO Grey Term P4 |
 
 
