@@ -469,7 +469,6 @@ number:
     id: gdo_open_duration
     type: open_duration
     unit_of_measurement: "ms"
-    internal: true
 
   - platform: secplus_gdo
     name: Closing duration
