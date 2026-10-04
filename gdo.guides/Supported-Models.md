@@ -19,7 +19,7 @@
 | **Genie**       | H2000C | Dry Contact | Intellicode RF | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3, P4 - Open Input, P6 - Closed Input |
 | **Older**       | Various Screw Terminal | Security+ 1.0 Wire Line   | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
 | **Dry Contact**       | Various Screw Terminal 1245R  | Security+ 1.0 RF Only  | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 | GDO Grey Term P3 |
-| **Known to have issues do to v1/v2 confusion**       | 1000SDR, 2000SDR, 8500/RJ020, 8500C/RJ020C - RATGDO is recommened with these. | Security+ 1.0 with 889LM Brown outs/reboots wall panel | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 or P3| GDO Grey Term P4 |
+| **v1/v2 confusion use v1**       | 1000SDR, 2000SDR, 8500/RJ020, 8500C/RJ020C | Security+ 1.0  | 315, 390 MHz         | GDO Red Term P1 | GDO White Term P2 or P3| GDO Grey Term P4 |
 
 
 <img src="/images/gdo/qc.connector.chamberlan.jpg" alt="Chamberlan" style="width: 200px;"/><img src="/images/gdo/screw.connector.jpg" alt="Older" style="width: 200px;"/><img src="/images/gdo/genie.dry.6p.jpg" alt="Genie" style="width: 400px;"/><img src="/images/gdo/qc.merlin.connections.jpg" alt="Merlin" style="width: 400px;"/><img src="/images/gdo/Common.EU.Models.jpg" alt="EU/Other Models" style="width: 400px;"/>
