@@ -74,11 +74,14 @@ Skip this step and note the generated unique key, this must be preserved in the 
 Now we can edit the newly created device named gdo1, preserving the API key and add the example GRGDO1 code after the captive portal line, as shown. We provide an alternate here to ensure upstream changes are well tested for good code quality.
 
 ```yaml
-# GRGDO setup guide ver 2026.03.18
+# GRGDO setup guide ver 2026.10.29
 external_components:
-  - source: github://GelidusResearch/esphome-secplus-gdo
+  - source:
+      type: git
+      url: https://github.com/gelidusresearch/esphome-secplus-gdo
+      ref: master
     components: [ secplus_gdo ]
-    refresh: 0s
+    refresh: always
 # ToF Sensor
 #  - source: github://GelidusResearch/ToF
 #    components: [vl53l1x]
