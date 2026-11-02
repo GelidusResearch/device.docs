@@ -144,7 +144,15 @@ wifi:
 captive_portal:
 
 logger:
-  baud_rate: 115200 # Set to 0 for GRGDO1 v1.0 hardware with the VL53L1X sensor
+  baud_rate: 115200
+#Recommended log settings
+  level: DEBUG
+  logs:
+    secplus_gdo: DEBUG
+    secplus_gdo.vehicle: DEBUG
+    gdolib: DEBUG
+    ot_main: ERROR
+    esp-idf: ERROR
 
 # You should secure your HA API see: https://esphome.io/components/api/ there is a tool mid page to randomly generate a key
 api:
